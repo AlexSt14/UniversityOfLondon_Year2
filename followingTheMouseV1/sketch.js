@@ -1,3 +1,8 @@
+//////////////////////////////////
+// COURSERA GRAPHICS PROGRAMMING
+//////////////////////////////////
+// Adapted from https://github.com/nature-of-code/
+// released under MIT license
 let ball;
 
 function setup() {
