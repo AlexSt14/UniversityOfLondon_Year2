@@ -31,7 +31,7 @@ class Ball {
     this.velocity = new createVector(0, 0);
     this.location = new createVector(randomX,randomY);
     this.acceleration = new createVector(0, 0);
-    this.maxVelocity = 5;
+    this.maxVelocity = 7;
   }
 
   run(){
@@ -40,7 +40,8 @@ class Ball {
   }
 
   draw(){
-    stroke(255);
+    stroke(173);
+    strokeWeight(0.4);
     line(this.location.x,this.location.y,this.prevLocation.x,this.prevLocation.y);
     this.prevLocation = this.location.copy();
   }
