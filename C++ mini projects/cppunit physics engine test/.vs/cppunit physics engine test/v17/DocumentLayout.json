@@ -1,0 +1,83 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\alex_\\source\\repos\\cppunit physics engine test\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4C9C173E-88E3-4B12-BFC3-4A8AB3B276C8}|cppunit physics engine test\\cppunit physics engine test.vcxproj|C:\\Users\\alex_\\source\\repos\\cppunit physics engine test\\cppunit physics engine test\\physics.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4C9C173E-88E3-4B12-BFC3-4A8AB3B276C8}|cppunit physics engine test\\cppunit physics engine test.vcxproj|solutionrelative:cppunit physics engine test\\physics.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C9C173E-88E3-4B12-BFC3-4A8AB3B276C8}|cppunit physics engine test\\cppunit physics engine test.vcxproj|C:\\Users\\alex_\\source\\repos\\cppunit physics engine test\\cppunit physics engine test\\physics.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4C9C173E-88E3-4B12-BFC3-4A8AB3B276C8}|cppunit physics engine test\\cppunit physics engine test.vcxproj|solutionrelative:cppunit physics engine test\\physics.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C9C173E-88E3-4B12-BFC3-4A8AB3B276C8}|cppunit physics engine test\\cppunit physics engine test.vcxproj|C:\\Users\\alex_\\source\\repos\\cppunit physics engine test\\cppunit physics engine test\\cppunit physics engine test.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4C9C173E-88E3-4B12-BFC3-4A8AB3B276C8}|cppunit physics engine test\\cppunit physics engine test.vcxproj|solutionrelative:cppunit physics engine test\\cppunit physics engine test.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 145,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "physics.cpp",
+              "DocumentMoniker": "C:\\Users\\alex_\\source\\repos\\cppunit physics engine test\\cppunit physics engine test\\physics.cpp",
+              "RelativeDocumentMoniker": "cppunit physics engine test\\physics.cpp",
+              "ToolTip": "C:\\Users\\alex_\\source\\repos\\cppunit physics engine test\\cppunit physics engine test\\physics.cpp",
+              "RelativeToolTip": "cppunit physics engine test\\physics.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-06-03T13:10:52.888Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "physics.h",
+              "DocumentMoniker": "C:\\Users\\alex_\\source\\repos\\cppunit physics engine test\\cppunit physics engine test\\physics.h",
+              "RelativeDocumentMoniker": "cppunit physics engine test\\physics.h",
+              "ToolTip": "C:\\Users\\alex_\\source\\repos\\cppunit physics engine test\\cppunit physics engine test\\physics.h",
+              "RelativeToolTip": "cppunit physics engine test\\physics.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACUAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-06-03T13:05:51.648Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "cppunit physics engine test.cpp",
+              "DocumentMoniker": "C:\\Users\\alex_\\source\\repos\\cppunit physics engine test\\cppunit physics engine test\\cppunit physics engine test.cpp",
+              "RelativeDocumentMoniker": "cppunit physics engine test\\cppunit physics engine test.cpp",
+              "ToolTip": "C:\\Users\\alex_\\source\\repos\\cppunit physics engine test\\cppunit physics engine test\\cppunit physics engine test.cpp",
+              "RelativeToolTip": "cppunit physics engine test\\cppunit physics engine test.cpp",
+              "ViewState": "AQIAACEAAAAAAAAAAAAAAC4AAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-06-03T12:53:56.596Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
