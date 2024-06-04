@@ -92,21 +92,16 @@ describe("Test the /spells route", () => {
         });
     });
     it("Testing the modifying of a spell", (done) => {
-        let spell = 
-        {
-            id: 1001,
-            name: "Updated Rabbit foot positivity",
-            ingredients: [
-                {name: "Foot of rabbit"},
-                {name: "Joice of beetle"},
-                {name: "Honey"}
-            ],
-            result: "Improved Rabbit foot"
-        };
-        expectedSpells[0] = spell;
+        expectedSpells[0].name = "Updated Rabbit foot positivity";
+        expectedSpells[0].ingredients = [
+            {name: "Foot of rabbit"},
+            {name: "Joice of beetle"},
+            {name: "Honey"}
+        ],
+        expectedSpells[0].result = "Improved Rabbit foot";
         chai.request("http://localhost:3000")
         .put("/spells/1001")
-        .send(spell)
+        .send(expectedSpells[0])
         .end((err,res) => {
             assert.deepEqual(res.body, expectedSpells[0]);
             done();
