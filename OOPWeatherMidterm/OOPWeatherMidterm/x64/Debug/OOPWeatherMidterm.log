@@ -1,0 +1,7 @@
+﻿  CSVReader.cpp
+C:\University of London BSc Computer Science\OOP\Midterm\OOPWeatherMidterm\OOPWeatherMidterm\CSVReader.cpp(40,27): warning C4101: 'e': unreferenced local variable
+C:\University of London BSc Computer Science\OOP\Midterm\OOPWeatherMidterm\OOPWeatherMidterm\CSVReader.cpp(56,35): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\University of London BSc Computer Science\OOP\Midterm\OOPWeatherMidterm\OOPWeatherMidterm\CSVReader.cpp(58,30): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  OOPWeatherMidterm.cpp
+  Generating Code...
+  OOPWeatherMidterm.vcxproj -> C:\University of London BSc Computer Science\OOP\Midterm\OOPWeatherMidterm\x64\Debug\OOPWeatherMidterm.exe
