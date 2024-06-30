@@ -1,0 +1,777 @@
+
+ -------------------- ballManager.js ------------------------ 
+
+//Managing the balls positions and creating them
+let isAltPressed = false;       //In order to place the cue ball, the user has to press the Alt key and mouse
+class BallManager {
+    constructor(snookerTable) {
+        this.snookerTable = snookerTable;
+        this.cueBallID;
+        this.cueBallBody;
+        //Saving the initial positions of the colored balls
+        this.coloredBallsPositions = [
+            {x: this.snookerTable.x-this.snookerTable.width/3+30, y: this.snookerTable.y+75, color: 'yellow'},
+            {x: this.snookerTable.x-this.snookerTable.width/3+30, y: this.snookerTable.y-75, color: 'green'},
+            {x: this.snookerTable.x-this.snookerTable.width/3+30, y: this.snookerTable.y, color: 'orange'},
+            {x: this.snookerTable.x, y: this.snookerTable.y, color: 'blue'},
+            {x: this.snookerTable.x+this.snookerTable.width/4-23, y: this.snookerTable.y, color: 'pink'},
+            {x: this.snookerTable.x+this.snookerTable.width/2-40, y: this.snookerTable.y, color: 'black'}
+        ]
+    }
+    //Functions to set the starting positions of the balls
+    setStartingPositions() {
+        this.clearBalls();
+        this.placeColoredBalls();
+        //Placing the red balls in a triangle shape
+        this.placeRedBallsInTriangle(this.snookerTable.x+this.snookerTable.width/4, this.snookerTable.y, this.snookerTable.ballsRadius);
+    }
+    setRandomRedPositionsReds() {
+        this.clearBalls();
+        this.placeColoredBalls();
+        //Placing the red balls in random positions
+        for (let i = 0; i < 15; i++) {
+            let x = random(this.snookerTable.x-this.snookerTable.width/4, this.snookerTable.x+this.snookerTable.width/4);
+            let y = random(this.snookerTable.y-this.snookerTable.height/2+50, this.snookerTable.y+this.snookerTable.height/2-50);
+            this.snookerTable.balls.push(new Ball(x, y, this.snookerTable.ballsRadius, 'red'));
+        }
+    }
+    setRandomAllPositions() {
+        this.clearBalls();
+        //Placing the red balls in random positions
+        for (let i = 0; i < 15; i++) {
+            let x = random(this.snookerTable.x-this.snookerTable.width/4, this.snookerTable.x+this.snookerTable.width/4);
+            let y = random(this.snookerTable.y-this.snookerTable.height/2+50, this.snookerTable.y+this.snookerTable.height/2-50);
+            this.snookerTable.balls.push(new Ball(x, y, this.snookerTable.ballsRadius, 'red'));
+        }
+        //Placing the colored balls in random positions
+        let colors = ['yellow', 'green', 'orange', 'blue', 'pink', 'black'];
+        for (let i = 0; i < 6; i++) {
+            let x = random(this.snookerTable.x-this.snookerTable.width/4, this.snookerTable.x+this.snookerTable.width/4);
+            let y = random(this.snookerTable.y-this.snookerTable.height/2+50, this.snookerTable.y+this.snookerTable.height/2-50);
+            this.snookerTable.balls.push(new Ball(x, y, this.snookerTable.ballsRadius, colors[i]));
+        }
+    }
+    clearBalls() {
+        //Removing all balls from the world except the white one
+        this.snookerTable.balls.forEach(ball => {
+            if (ball.color !== 'white') {
+                World.remove(engine.world, ball.body);
+            }
+        });
+        //Keeping only the white ball in the array
+        this.snookerTable.balls = this.snookerTable.balls.filter(ball => ball.color === 'white');
+        //If obstacles are active, then removing obstacles too
+        if (this.snookerTable.obstaclesActive) {
+            this.snookerTable.obstaclesChallenge.removeObstacles();
+        }
+    }
+    //Function to place the red balls in a triangle shape
+    placeRedBallsInTriangle(startPositionX, startPositionY, ballRadius) {
+        let x = startPositionX;
+        let y = startPositionY;
+        let rows = 5;
+        for (let i = 0; i < rows; i++) {
+            for (let j = 0; j <= i; j++) {
+                this.snookerTable.balls.push(new Ball(x, y, ballRadius, 'red'));
+                y += ballRadius * 2 * Math.sqrt(3)/1.6;
+            }
+            y = startPositionY - ballRadius * i-12;
+            x += ballRadius * 2 * 0.85;
+        }
+    }
+    //Function to place the colored balls in correct positions
+    placeColoredBalls() {
+        //Drawing colored balls. NO Red balls
+        this.coloredBallsPositions.forEach(ball => {
+            this.snookerTable.balls.push(new Ball(ball.x, ball.y, this.snookerTable.ballsRadius, ball.color));
+        });
+    }
+    //Function to add balls to the world after we removed them
+    addBallsToWorld() {
+        this.snookerTable.balls.forEach(ball => {
+            World.add(engine.world, ball.body);
+        });
+    }
+    //Function to draw the cue ball wherever the user clicks while pressing alt
+    drawCueBall(mouseX, mouseY) {
+        this.cueBallBody = this.snookerTable.balls.find(ball => ball.color === 'white'); 
+        if (this.cueBallBody) {
+            this.cueBallID = this.cueBallBody.body.id;
+        }
+        //This will prevent the user from adding multiple cue balls 
+        //It will also check if the mouse is within the boundaries of the arc before placing the cue ball   
+        if (!this.cueBallBody) {
+            if (this.snookerTable.isMouseInArc()) {
+                //Drawing the cue ball
+                let cueBall = new Ball(mouseX, mouseY, this.snookerTable.ballsRadius, 'white')
+                this.snookerTable.balls.push(cueBall);
+                //Adding it to the world
+                World.add(engine.world, cueBall.body);
+                console.log(this.snookerTable.balls);
+            }
+        }
+    }
+    //Function to add back a colored ball to the world, to the original position
+    addColoredBall(ball) {
+        for (let i = 0; i < this.coloredBallsPositions.length; i++) {
+            if (this.coloredBallsPositions[i].color === ball.label) {
+                this.snookerTable.balls.push(new Ball(this.coloredBallsPositions[i].x, this.coloredBallsPositions[i].y, this.snookerTable.ballsRadius, this.coloredBallsPositions[i].color));
+                World.add(engine.world, this.snookerTable.balls[this.snookerTable.balls.length-1].body);
+            }
+        }
+    }
+}
+ -------------------- balls.js ------------------------ 
+
+//Creating the balls class
+class Ball {
+    constructor(x, y, radius, color) {
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+        this.color = color;
+        this.restitution = 0.8;
+        this.mass = 1;
+        this.friction = 0.18;
+        this.label = "ball";
+        if (this.color === 'white') {
+            this.label = 'cueBall';
+        } else if (this.color !== 'red' && this.color !== 'white') {
+            this.label = this.color;
+        }
+        this.body = Bodies.circle(this.x, this.y, this.radius, {label: this.label, restitution: this.restitution, mass: this.mass, friction: this.friction});
+    }
+}
+ -------------------- collisionManager.js ------------------------ 
+
+//Managing collision with pockets and balls, updating score and matrix
+class CollisionManager {
+    constructor(snookerTable) {
+        this.snookerTable = snookerTable;
+        this.setupCollisionListener();
+        this.createCollisionMatrix();
+        this.collisionColor = 'green';
+        this.defaultColor = 'black';
+        this.coloredBallCounter = 0;
+    }
+    //Setting up a matrix for collisions showing to user
+    createCollisionMatrix() {
+        this.matrix = [
+            ['', 'Colored', 'Red Ball', 'Cushion'],
+            ['Cue', '', '', '']
+        ];
+        this.matrixColors = [
+            ['black', 'black', 'black', 'black'],
+            ['black', 'black', 'black', 'black']
+        ]
+    }
+    //Drawing the matrix to the canvas
+    drawCollisionMatrix() {
+        push();
+        textAlign(CENTER, BOTTOM); 
+        textSize(16);
+        let matrixCellWidth = 70;
+        let matrixCellHeight = 30;
+        let startX = width/2 - matrixCellWidth;
+        let startY = 50;
+        for (let i = 0; i < this.matrix.length; i++) {
+            for (let j = 0; j < this.matrix[i].length; j++) {
+                fill(this.matrixColors[i][j]);
+                stroke(255);
+                strokeWeight(2);
+                rect(startX + j*matrixCellWidth, startY + i*matrixCellHeight, matrixCellWidth, matrixCellHeight);
+                noStroke();
+                fill(255);
+                text("Collisions", width/2-70, 30);
+                text(this.matrix[i][j], startX + j*matrixCellWidth + matrixCellWidth/2-35, startY + i*matrixCellHeight + matrixCellHeight/2);
+            }
+        }
+        pop();
+    }
+    //Listening for collisions in the engine
+    setupCollisionListener() {
+        Matter.Events.on(engine, 'collisionStart', (event) => {
+            this.handleCollision(event);
+        });
+    }
+    //Handles the collisions
+    handleCollision(event) {
+        let pairs = event.pairs;
+        pairs.forEach(pair => {
+            let bodyA = pair.bodyA;
+            let bodyB = pair.bodyB;
+            //Checking if one of the bodies is the cue ball
+            if (this.checkCueBall(bodyA) || this.checkCueBall(bodyB)) {
+                let otherBody;
+                if (this.checkCueBall(bodyA)) otherBody = bodyB;
+                else otherBody = bodyA;
+                this.promptCollisionType(otherBody);
+            }
+        });
+    }
+    //Checking if the body is the cueball
+    checkCueBall(body) {
+        return body.label === 'cueBall';
+    }
+
+    //Prompts the collision type
+    promptCollisionType(otherBody) {
+        if (otherBody.label === 'angledSide') {
+            console.log('Cue-cushion collision');
+            this.matrixColors[1][3] = this.collisionColor;
+        } else if (otherBody.label === 'ball') {
+            console.log('Cue-red ball collision');
+            this.matrixColors[1][2] = this.collisionColor;
+        } 
+        //Checking for colored ball collisions
+        this.snookerTable.balls.forEach(ball => {
+            if (ball.label === otherBody.label && ball.label !== 'ball') {
+                console.log('Cue-colored ball collision');
+                this.matrixColors[1][1] = this.collisionColor;
+            }
+        });
+        this.resetCollisionMatrixColors();
+    }   
+    //Resetting colors of the matrix to black after collision after 1.8 seconds
+    resetCollisionMatrixColors() {
+        setTimeout(() => {
+            this.matrixColors.forEach((row, i) => {
+                this.matrixColors[i] = row.map(() => this.defaultColor);
+            });
+        }, 1800);
+    }
+    //Checking for pocket collisions
+    checkPockets() {
+        const pocketTreshold = (this.snookerTable.pocketRadius - this.snookerTable.ballsRadius)+7;
+        const pockets = [this.snookerTable.pocket1, this.snookerTable.pocket2, this.snookerTable.pocket3,
+                        this.snookerTable.pocket4, this.snookerTable.pocket5, this.snookerTable.pocket6];
+
+        //Using the dist function to check if the ball is in the pocket, iterating over all the balls
+        this.snookerTable.balls.forEach(ball => {
+            pockets.forEach(pocket => {
+                if (dist(ball.body.position.x, ball.body.position.y, pocket.position.x, pocket.position.y) < pocketTreshold) {
+                    this.removeBall(ball.body);
+                }
+            });
+        });
+        //In case of user pocketing a colored ball twice in a row, we alert the user of the fault
+        if (this.coloredBallCounter >= 2) {
+            alert("Fault! You have pocketed a colored ball twice in a row!");
+            this.coloredBallCounter = 0;
+        }
+    }
+    //Function to remove a ball from the world depending on what type of ball it is
+    removeBall(ball) {
+        if (ball.label === 'ball') {
+            World.remove(engine.world, ball);
+            this.snookerTable.balls = this.snookerTable.balls.filter(b => b.body !== ball);
+            this.coloredBallCounter = 0;
+        }
+        else if (ball.label === 'cueBall') {
+            World.remove(engine.world, ball);
+            this.snookerTable.balls = this.snookerTable.balls.filter(b => b.body !== ball);
+            this.snookerTable.ballManager.drawCueBall();
+            alert('Fault! You have pocketed the cue ball! You can place back the cue ball inside the arc!')
+        }
+        else {
+            World.remove(engine.world, ball);
+            this.snookerTable.balls = this.snookerTable.balls.filter(b => b.body !== ball);
+            this.snookerTable.ballManager.addColoredBall(ball);
+            this.coloredBallCounter++;
+        }
+    }
+}
+ -------------------- cue.js ------------------------ 
+
+//Managing and creating the cue
+let isSpacePressed = false;     //In order to use the cue, the user has to press the space key and mouse simultaneously
+class Cue {
+    constructor(snookerTable) {
+        this.snookerTable = snookerTable;
+        this.angle = 0;
+        this.power = 0;
+        this.length = 200; 
+        this.maxLength = 400;   
+        this.isDrawing = false;
+    }
+    //Updating the angle and power of the cue based on the cue ball
+    update(mouseX, mouseY) {
+        if (this.isDrawing) {
+            let whiteBall = this.snookerTable.balls.find(ball => ball.color === 'white');
+            this.angle = atan2(mouseY - whiteBall.body.position.y, mouseX - whiteBall.body.position.x);
+            this.power = dist(mouseX, mouseY, whiteBall.body.position.x, whiteBall.body.position.y);
+        }
+    }
+    //Drawing the cue
+    draw() {
+        let whiteBall = this.snookerTable.balls.find(ball => ball.color === 'white');
+        let cueBallVelocity, speed;
+        if (whiteBall) {
+            cueBallVelocity = whiteBall.body.velocity;
+            speed = Math.sqrt(cueBallVelocity.x*cueBallVelocity.x + cueBallVelocity.y*cueBallVelocity.y);
+        }
+        //Drawing the cue only if the speed is low enough
+        if (whiteBall && speed < 0.025) {
+            push();
+            translate(whiteBall.body.position.x, whiteBall.body.position.y);
+            strokeWeight(5);
+            stroke(139,69,19);
+            rotate(this.angle);
+            let cueLength = constrain(this.length + this.power, this.length, this.maxLength);   
+            line(whiteBall.radius+10+this.power/20, 0, cueLength, 0);
+            pop();
+        }
+    }
+    //Controlling the hit of the cue and the power
+    hit() {
+        let whiteBall = this.snookerTable.balls.find(ball => ball.color === 'white'); 
+        if (whiteBall) {
+            //This controls the power of the hit
+            let force = p5.Vector.fromAngle(this.angle).mult(-1).mult(this.power*0.05);  
+            Matter.Body.setVelocity(whiteBall.body, {x: force.x, y: force.y});
+        }
+        this.isDrawing = false;
+        this.power = 0;
+    }
+}
+ -------------------- helper.js ------------------------ 
+
+//Helper class that will deal with text regarding helpful information
+class Helper {
+    constructor() {
+        this.snookerTable = snookerTable;
+        this.textX = this.snookerTable.x;
+        this.textY = this.snookerTable.y + this.snookerTable.height/2 + 50;
+        this.textSize = 16;
+        this.text = ["Welcome to Snooker!", "Press '1, 2, or 3' to reset the game in different states", "Press and hold 'alt+right-click' to place the cue ball in the ARC of the table", 
+            "Press and hold 'space+right-click' and pull the mouse to control the cue and how hard you hit"];
+    }
+    //Function to draw the helper text to canvas for additional information of how to play the game
+    draw() {
+        push();
+        fill(255);
+        textSize(this.textSize);
+        textAlign(CENTER);
+        this.text.forEach((line, index) => {
+            text(line, this.textX, this.textY + (index+1)*this.textSize);
+        });
+        pop();
+    }
+}
+ -------------------- obstaclesChallenge.js ------------------------ 
+
+//Random obstacles challenge class and management
+class randomObstaclesChallenge {
+    constructor(snookerTable) {
+        this.snookerTable = snookerTable;
+        this.obstacles = [];
+        this.obstaclesActive = false;
+
+    }
+    //Adding random obstacles around pockets for a challenge mode extension
+    randomObstaclesChallenge() {
+        //Obstacles will be placed with small random positions, sizes and angular velocities
+        let pockets = [this.snookerTable.pocket1, this.snookerTable.pocket2, this.snookerTable.pocket3, 
+                    this.snookerTable.pocket4, this.snookerTable.pocket5, this.snookerTable.pocket6];
+        pockets.forEach(pocket => {
+            if (pocket.position.x < this.snookerTable.x+this.snookerTable.width/4 && pocket.position.y < this.snookerTable.y) {
+                let x = pocket.position.x+70; 
+                let y = pocket.position.y+40; 
+                let obstacle = Bodies.rectangle(x, y, random(15,25), random(45,60), { isStatic: true, angularSpeed: 0.02, label: 'obstacle'});
+                Matter.Body.setAngularVelocity(obstacle, this.setRandomAngularVelocity());
+                this.obstacles.push(obstacle);
+            }
+            else if (pocket.position.x < this.snookerTable.x+this.snookerTable.width/4 && pocket.position.y > this.snookerTable.y) {
+                let x = pocket.position.x+70; 
+                let y = pocket.position.y-40; 
+                let obstacle = Bodies.rectangle(x, y, random(15,25), random(45,60), { isStatic: true, angularSpeed: 0.02, label: 'obstacle'});
+                Matter.Body.setAngularVelocity(obstacle, this.setRandomAngularVelocity());
+                this.obstacles.push(obstacle);
+            }
+            else if (pocket.position.x > this.snookerTable.x+this.snookerTable.width/4 && pocket.position.y < this.snookerTable.y) {
+                let x = pocket.position.x-90; 
+                let y = pocket.position.y+140; 
+                let obstacle = Bodies.rectangle(x, y, random(15,25), random(65,110), { isStatic: true, angularSpeed: 0.02, label: 'obstacle'});
+                Matter.Body.setAngularVelocity(obstacle, -0.02);
+                this.obstacles.push(obstacle);
+            }
+        });
+        World.add(engine.world, this.obstacles);
+    }
+    //Changing the angle of the obstacles for the challenge mode extension
+    obstaclesAngleUpdate() {
+        this.obstacles.forEach(obstacle => {
+            Matter.Body.setAngle(obstacle, obstacle.angle + obstacle.angularVelocity);
+        });
+    }
+    //Creating a random angular velocity for obstacles that can be positive or negative
+    setRandomAngularVelocity() {
+        if (random(1) < 0.5) return random(-0.02, -0.006);
+        else return random(0.006, 0.02);
+    }
+    //Removing the obstacles from the world and clearing array when game mode changes
+    removeObstacles() {
+        World.remove(engine.world, this.obstacles);
+        this.obstacles = [];
+        this.obstaclesActive = false;
+    }
+}
+ -------------------- sketch.js ------------------------ 
+
+//////////////////////////////////////////////////
+/* GRAPHICS PROGRAMMING Midterm Report
+Snooker Game Design and Extension Report
+
+My snooker game implementation combines traditional gameplay with innovative controls and
+a unique obstacle challenge mode.
+
+Control Design: The game utilizes a hybrid keyboard-mouse control system for precise and intuitive interaction:
+1. Cue Control: The player activates the cue by holding the spacebar and right-clicking. Mouse movement then
+adjusts the angle and power of the cue, mimicking the physical action of drawing back a cue stick. This design offers
+fine-grained control over shot power and direction.
+
+2. Cue Ball Placement: Using the "alt+right-click" combination, the player can precisely position the cue ball inside 
+the arc area of the table. This feature accurately simulates the "ball in hand" rule in snooker. An important aspect is that 
+the cue ball can only be placed inside the arc area, not outside.
+
+3. Game State Selection: Keys 1-3 allow players to reset the game to different states, offering variety in gameplay scenarios.
+
+Unique Extension: Rotating Obstacle Challenge Mode
+
+To extend the game beyond conventional snooker gameplay and beyond the requirements of the assignment, I implemented a 
+"Rotating Obstacle Challenge Mode", activated by pressing key '4'. This mode introduces the following elements:
+
+1. Random Red Ball Placement: Upon activation, all red balls are randomly distributed across the table, creating 
+unique and unpredictable game states.
+
+2. Rotating Obstacles: Small, rectangular obstacles are strategically placed near the pockets. These obstacles continuously
+rotate, adding a dynamic challenge when taking shots.
+
+3. Variable Rotation: Each obstacle is assigned a random angular velocity, ensuring diverse rotational speeds and directions 
+(clockwise or counterclockwise). This variability increases the mode's replay value and challenge.
+
+4. Precision Shot-Making: The player must time their shots to navigate around these rotating barriers which requires more skills
+than the standard snooker game.
+
+Implementation Details:
+- Obstacles are created as static Matter.js bodies, allowing rotation without displacement.
+- Angular velocities are carefully tuned (between +-0.006 and +-0.02) to provide noticeable but not overly rapid rotation.
+- The 'obstaclesAngleUpdate' function continuously updates obstacle angles based on their angular velocities, 
+ensuring smooth rotation.
+
+This extension transforms the traditional snooker experience into a puzzle-like challenge, requiring players to consider
+not just standard snooker tactics, but also the timing and positioning of their shots in relation to the moving obstacles.
+It provides a fresh twist on the classic game.
+
+By combining authentic snooker elements with this innovative obstacle system, the game bridges the gap between traditional 
+sport simulation and creative puzzle gameplay, offering a distinctive and engaging experience that sets it apart from 
+standard snooker games.
+*/
+
+//////////////////////////////////////////////////
+//Module aliases
+let Engine = Matter.Engine;
+let Render = Matter.Render;
+let World = Matter.World;
+let Bodies = Matter.Bodies;
+let Mouse = Matter.Mouse;
+let MouseConstraint = Matter.MouseConstraint;
+let engine;
+let snookerTable;
+let canvas;
+let helper;
+
+function setup() {
+    canvas = createCanvas(1520, 730);
+    //Create an engine
+    engine = Engine.create();
+    //Create the snooker table
+    snookerTable = new SnookerTable(width/2, height/2, 800, 400);
+    //Create the helper text class
+    helper = new Helper();
+    //Add the table to the world
+    snookerTable.setup();
+    //Removing gravity
+    engine.world.gravity.x = 0;
+    engine.world.gravity.y = 0;
+    //Setup mouse for interaction with balls
+    //This mouse constraint was taken from the class example from week 4
+    let mouse = Mouse.create(canvas.elt);
+    let mouseParams = {
+        mouse: mouse,
+        constraint: { stiffness: 0.05 }
+    };
+    mouseConstraint = MouseConstraint.create(engine, mouseParams);
+    mouseConstraint.mouse.pixelRatio = pixelDensity();
+    World.add(engine.world, mouseConstraint);
+    rectMode(CENTER);
+}
+function draw() {
+    background(0);
+    Engine.update(engine);
+
+    //Draw the snooker table and balls
+    engine.world.bodies.forEach(body => {
+        //Drawing only bodies that are static, doing so, we avoid drawing the balls
+        if (body.isStatic) {
+            noStroke();
+            if (body.label == 'angledSide') {
+                // color for angled sides
+                fill(0, 95, 0);
+            }
+            else if (body.label == 'border') {
+                // color for rect borders
+                fill(84, 46, 14);
+            }
+            else if (body.label == 'tableSurface') {
+                // color for table surface
+                fill(0, 150, 0);
+            }
+            else if (body.label == 'pocket') {
+                // color for pockets
+                fill(0);
+            }
+            else if (body.label == 'pocketBacking') {
+                // color for pocket backings
+                fill(222, 177, 18);
+            }
+            else if (body.label == 'obstacle') {
+                // color for obstacles
+                fill(115, 50, 0);
+            }
+            drawVertices(body.vertices);
+        }
+    });
+    //Drawing lines and arc
+    snookerTable.draw();
+    //Drawing the balls
+    snookerTable.balls.forEach(ball => {
+        fill(ball.color);
+        stroke(1);  
+        drawVertices(ball.body.vertices);
+    });
+    //Check for collisions with pockets
+    snookerTable.collisionManager.checkPockets();
+    //Draw the cue
+    if (isSpacePressed) {
+        snookerTable.cue.update(mouseX, mouseY);
+    }
+    snookerTable.cue.draw();
+    //Drawing the collision matrix
+    snookerTable.collisionManager.drawCollisionMatrix();
+    //Drawing the helper text to canvas
+    helper.draw();
+    //Update the obstacles angle
+    if (snookerTable.obstaclesActive) {
+        snookerTable.obstaclesChallenge.obstaclesAngleUpdate();
+    }
+}
+//This function was taken from the class example for drawing vertices
+//It was shown in multiple lessons during the Graphics Programming course
+function drawVertices(vertices) {
+    beginShape();
+    for (let i = 0; i < vertices.length; i++) {
+        vertex(vertices[i].x, vertices[i].y);
+    }
+    endShape(CLOSE);
+}
+//Key action functions for different interactivity
+function keyPressed() {
+    if (key === '1') {
+        snookerTable.ballManager.setStartingPositions();
+        snookerTable.ballManager.addBallsToWorld();
+    } else if (key === '2') {
+        snookerTable.ballManager.setRandomRedPositionsReds();
+        snookerTable.ballManager.addBallsToWorld();
+    } else if (key === '3') {
+        snookerTable.ballManager.setRandomAllPositions();
+        snookerTable.ballManager.addBallsToWorld();
+    } else if (key === '4') {
+        snookerTable.ballManager.setRandomRedPositionsReds();
+        snookerTable.ballManager.addBallsToWorld();
+        snookerTable.obstaclesChallenge.randomObstaclesChallenge();
+        snookerTable.obstaclesActive = true;
+    }
+    if (key === ' ') {
+        isSpacePressed = true;
+    }
+    if (key === 'Alt') {
+        isAltPressed = true;
+    }
+}
+function keyReleased() {
+    if (key === ' ') {
+        isSpacePressed = false;
+        snookerTable.cue.isDrawing = false;
+    }
+    if (key === 'Alt') {
+        isAltPressed = false;
+    }
+}
+function mousePressed() {
+    if (isSpacePressed) {
+        snookerTable.cue.isDrawing = true;
+    }
+    if (isAltPressed) {
+        snookerTable.ballManager.drawCueBall(mouseX, mouseY);
+    }
+}
+function mouseReleased() {
+    if (isSpacePressed) {
+        snookerTable.cue.hit();
+    }
+}
+ -------------------- snookerTable.js ------------------------ 
+
+//Drawing the snooker table using fromVertices
+class SnookerTable {
+    constructor(x, y, width, height) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        this.balls = [];
+        this.cueBall;
+        this.ballsRadius = (this.width/36)/2;   //Calculating the ball radius
+        this.pocketRadius = this.ballsRadius * 1.5;    //Calculating the pocket radius based on the ball radius
+        this.angledSidesRestitution = 1;
+        //drawing surface of the table
+        this.surface = Bodies.rectangle(this.x, this.y, this.width+40, this.height+40, { isStatic: true, label: 'tableSurface', isSensor: true, friction: 0.5 });
+        //drawing the angled sides / cushions of the table
+        this.verticesLeft = [
+            { x: this.x - this.width/2-15, y: this.y - this.height/2+15 },
+            { x: this.x - this.width/2+15, y: this.y - this.height/2+40 },
+            { x: this.x - this.width/2+15, y: this.y + this.height/2-35 },
+            { x: this.x - this.width/2-15, y: this.y + this.height/2 }
+        ];
+        this.verticesRight = [
+            { x: this.x + this.width/2-14, y: this.y - this.height/2+35 },
+            { x: this.x + this.width/2+15, y: this.y - this.height/2 },
+            { x: this.x + this.width/2+15, y: this.y + this.height/2-10 },
+            { x: this.x + this.width/2-14, y: this.y + this.height/2-35 }
+        ];
+        this.verticesTop = [
+            { x: this.x - this.width/2+17, y: this.y - this.height/2-10 },
+            { x: this.x-5, y: this.y - this.height/2-10 },
+            { x: this.x-25, y: this.y - this.height/2+15 },
+            { x: this.x - this.width/2+50, y: this.y - this.height/2+15 }
+        ];
+        this.verticesBottom = [
+            { x: this.x - this.width/2+50, y: this.y + this.height/2-25 },
+            { x: this.x-10, y: this.y + this.height/2 },
+            { x: this.x-30, y: this.y + this.height/2-25 },
+            { x: this.x - this.width/2+15, y: this.y + this    .height/2 }
+        ];
+        this.verticesTop2 = [
+            { x: this.x+45, y: this.y - this.height/2-10 },
+            { x: this.x+this.width/2+25, y: this.y - this.height/2-10 },
+            { x: this.x+this.width/2-10, y: this.y - this.height/2+15 },
+            { x: this.x +65, y: this.y - this.height/2+15 }
+        ];
+        this.verticesBottom2 = [
+            { x: this.x+68, y: this.y + this.height/2 },
+            { x: this.x+this.width/2-10, y: this.y + this.height/2 },
+            { x: this.x+this.width/2+25, y: this.y + this.height/2+25 },
+            { x: this.x +48, y: this.y + this.height/2+25 }
+        ];
+        this.angledSideLeft = Bodies.fromVertices(this.x - this.width / 2-5, this.y, this.verticesLeft, { isStatic: true, label: 'angledSide', restitution: this.angledSidesRestitution});
+        this.angledSideRight = Bodies.fromVertices(this.x + this.width / 2+7, this.y, this.verticesRight, { isStatic: true, label: 'angledSide', restitution: this.angledSidesRestitution});
+        this.angledSideTop = Bodies.fromVertices(this.x-this.width/4, this.y - this.height / 2-5.5, this.verticesTop, { isStatic: true, label: 'angledSide', restitution: this.angledSidesRestitution});
+        this.angledSideBottom = Bodies.fromVertices(this.x-this.width/4, this.y + this.height / 2+5, this.verticesBottom, { isStatic: true, label: 'angledSide', restitution: this.angledSidesRestitution});
+        this.angledSideTop2 = Bodies.fromVertices(this.x+this.width/4, this.y - this.height / 2-5.5, this.verticesTop2, { isStatic: true, label: 'angledSide', restitution: this.angledSidesRestitution});
+        this.angledSideBottom2 = Bodies.fromVertices(this.x+this.width/4, this.y + this.height / 2+5, this.verticesBottom2, { isStatic: true, label: 'angledSide', restitution: this.angledSidesRestitution});
+
+        //Drawing the borders of the table
+        this.borderLeft = Bodies.rectangle(this.x - this.width / 2-17, this.y, 20, this.height+50, { isStatic: true, label: 'border'});
+        this.borderRight = Bodies.rectangle(this.x + this.width / 2+17, this.y, 20, this.height+50, { isStatic: true, label: 'border'});
+        this.borderTop = Bodies.rectangle(this.x, this.y - this.height / 2-17, this.width+50, 20, { isStatic: true, label: 'border'});
+        this.borderBottom = Bodies.rectangle(this.x, this.y + this.height / 2+17, this.width+50, 20, { isStatic: true, label: 'border'});
+        //Drawing the pocket backings behind the pockets
+        this.pocketBacking1 = Bodies.rectangle(this.angledSideLeft.position.x-2, this.angledSideLeft.position.y-this.height/2-17, 40, 20, { isStatic: true, label: 'pocketBacking'});
+        this.pocketBacking2 = Bodies.rectangle(this.angledSideLeft.position.x-2, this.angledSideLeft.position.y+this.height/2+17, 40, 20, { isStatic: true, label: 'pocketBacking'});
+        this.pocketBacking3 = Bodies.rectangle(this.angledSideLeft.position.x-12, this.angledSideLeft.position.y-this.height/2-7, 20, 40, { isStatic: true, label: 'pocketBacking'});   
+        this.pocketBacking4 = Bodies.rectangle(this.angledSideLeft.position.x-12, this.angledSideLeft.position.y+this.height/2+7, 20, 40, { isStatic: true, label: 'pocketBacking'});
+        this.pocketBacking5 = Bodies.rectangle(this.x, this.angledSideTop.position.y-11, 50, 20, { isStatic: true, label: 'pocketBacking'});
+        this.pocketBacking6 = Bodies.rectangle(this.x, this.angledSideBottom.position.y+11, 50, 20, { isStatic: true, label: 'pocketBacking'});
+        this.pocketBacking7 = Bodies.rectangle(this.angledSideRight.position.x, this.angledSideRight.position.y-this.height/2-17, 40, 20, { isStatic: true, label: 'pocketBacking'});
+        this.pocketBacking8 = Bodies.rectangle(this.angledSideRight.position.x, this.angledSideRight.position.y+this.height/2+17, 40, 20, { isStatic: true, label: 'pocketBacking'});
+        this.pocketBacking9 = Bodies.rectangle(this.angledSideRight.position.x+10, this.angledSideRight.position.y-this.height/2-7, 20, 40, { isStatic: true, label: 'pocketBacking'});
+        this.pocketBacking10 = Bodies.rectangle(this.angledSideRight.position.x+10, this.angledSideRight.position.y+this.height/2+7, 20, 40, { isStatic: true, label: 'pocketBacking'});
+        //Drawing the pockets of the table
+        this.pocket1 = Bodies.circle(this.angledSideLeft.position.x+8, this.angledSideLeft.position.y-this.height/2+4, this.pocketRadius, { isStatic: true, isSensor: true, label: 'pocket'});
+        this.pocket2 = Bodies.circle(this.angledSideLeft.position.x+8, this.angledSideLeft.position.y+this.height/2-4, this.pocketRadius, { isStatic: true, isSensor: true, label: 'pocket'});
+        this.pocket3 = Bodies.circle(this.angledSideRight.position.x-10, this.angledSideRight.position.y-this.height/2+4, this.pocketRadius, { isStatic: true, isSensor: true, label: 'pocket'});
+        this.pocket4 = Bodies.circle(this.angledSideRight.position.x-12, this.angledSideRight.position.y+this.height/2-4, this.pocketRadius, { isStatic: true, isSensor: true, label: 'pocket'});
+        this.pocket5 = Bodies.circle(this.x, this.angledSideTop.position.y+3, this.pocketRadius, { isStatic: true, isSensor: true, label: 'pocket'});
+        this.pocket6 = Bodies.circle(this.x, this.angledSideBottom.position.y-3, this.pocketRadius, { isStatic: true, isSensor: true, label: 'pocket'});
+        this.collisionManager = new CollisionManager(this);
+        this.ballManager = new BallManager(this);
+        this.cue = new Cue(this);
+        this.obstaclesChallenge = new randomObstaclesChallenge(this);
+        this.ballManager.setStartingPositions();
+    }
+    //draw function for white lines and arc
+    draw() {
+        push();
+        stroke(200);
+        strokeWeight(2);
+        line(this.x-this.width/3+30,this.y-this.height/2+9,this.x-this.width/3+30,this.y+this.height/2-9);
+        noFill();
+        arc(this.x-this.width/3+30,this.y,this.width/5.3, this.width/5.3,PI/2,3*PI/2);
+        pop();
+    }
+    setup() {
+        //Adding snooker table to the world
+        World.add(engine.world, [
+            snookerTable.surface,
+            snookerTable.angledSideLeft,
+            snookerTable.angledSideRight,
+            snookerTable.angledSideTop,
+            snookerTable.angledSideBottom,
+            snookerTable.angledSideTop2,
+            snookerTable.angledSideBottom2,
+            snookerTable.borderLeft,
+            snookerTable.borderRight,
+            snookerTable.borderTop,
+            snookerTable.borderBottom,
+            snookerTable.pocketBacking1,
+            snookerTable.pocketBacking2,
+            snookerTable.pocketBacking3,
+            snookerTable.pocketBacking4,
+            snookerTable.pocketBacking5,
+            snookerTable.pocketBacking6,
+            snookerTable.pocketBacking7,
+            snookerTable.pocketBacking8,
+            snookerTable.pocketBacking9,
+            snookerTable.pocketBacking10,
+            snookerTable.pocket1,
+            snookerTable.pocket2,
+            snookerTable.pocket3,
+            snookerTable.pocket4,
+            snookerTable.pocket5,
+            snookerTable.pocket6
+        ]);
+        //Adding the balls to the world
+        World.add(engine.world, snookerTable.balls.map(ball => ball.body));
+    }
+    //Checking if the mouse is within the boundaries of the arc for placement of cue ball
+    isMouseInArc() {
+        if (mouseX >= this.x-this.width/3+30) {
+            return false;
+        }
+        let arcCenterX = this.x-this.width/3+30;
+        let arcCenterY = this.y;
+        let arcRadius = this.width/5.3/2;
+        //Checking if the mouse is within the circular region of the arc
+        let distanceFromCenter = dist(mouseX, mouseY, arcCenterX, arcCenterY);
+        if (distanceFromCenter > arcRadius) {
+            return false;
+        }
+        //Checking if the mouse is within the angle of the arc
+        let arcAngle = atan2(mouseY - arcCenterY, mouseX - arcCenterX);
+        if (arcAngle < 0) {
+            arcAngle += TWO_PI;
+        }
+        return arcAngle >= PI/2 && arcAngle <= 3*PI/2;
+    }
+}   
