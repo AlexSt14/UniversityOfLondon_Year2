@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{90EBFDB4-E7D2-4E4D-984D-4597DBCC276E}|OOPWeatherMidterm\\OOPWeatherMidterm.vcxproj|D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\RenderWeatherData.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{90EBFDB4-E7D2-4E4D-984D-4597DBCC276E}|OOPWeatherMidterm\\OOPWeatherMidterm.vcxproj|solutionrelative:OOPWeatherMidterm\\RenderWeatherData.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{90EBFDB4-E7D2-4E4D-984D-4597DBCC276E}|OOPWeatherMidterm\\OOPWeatherMidterm.vcxproj|D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\PredictWeatherData.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{90EBFDB4-E7D2-4E4D-984D-4597DBCC276E}|OOPWeatherMidterm\\OOPWeatherMidterm.vcxproj|solutionrelative:OOPWeatherMidterm\\PredictWeatherData.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{90EBFDB4-E7D2-4E4D-984D-4597DBCC276E}|OOPWeatherMidterm\\OOPWeatherMidterm.vcxproj|D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\WeatherMain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -15,28 +15,44 @@
       "RelativeMoniker": "D:0:0:{90EBFDB4-E7D2-4E4D-984D-4597DBCC276E}|OOPWeatherMidterm\\OOPWeatherMidterm.vcxproj|solutionrelative:OOPWeatherMidterm\\CSVReader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{90EBFDB4-E7D2-4E4D-984D-4597DBCC276E}|OOPWeatherMidterm\\OOPWeatherMidterm.vcxproj|D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\WeatherMain.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{90EBFDB4-E7D2-4E4D-984D-4597DBCC276E}|OOPWeatherMidterm\\OOPWeatherMidterm.vcxproj|solutionrelative:OOPWeatherMidterm\\WeatherMain.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{90EBFDB4-E7D2-4E4D-984D-4597DBCC276E}|OOPWeatherMidterm\\OOPWeatherMidterm.vcxproj|D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\PredictWeatherData.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{90EBFDB4-E7D2-4E4D-984D-4597DBCC276E}|OOPWeatherMidterm\\OOPWeatherMidterm.vcxproj|solutionrelative:OOPWeatherMidterm\\PredictWeatherData.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{90EBFDB4-E7D2-4E4D-984D-4597DBCC276E}|OOPWeatherMidterm\\OOPWeatherMidterm.vcxproj|D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\OOPWeatherMidterm.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{90EBFDB4-E7D2-4E4D-984D-4597DBCC276E}|OOPWeatherMidterm\\OOPWeatherMidterm.vcxproj|solutionrelative:OOPWeatherMidterm\\OOPWeatherMidterm.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{90EBFDB4-E7D2-4E4D-984D-4597DBCC276E}|OOPWeatherMidterm\\OOPWeatherMidterm.vcxproj|D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\Candlestick.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{90EBFDB4-E7D2-4E4D-984D-4597DBCC276E}|OOPWeatherMidterm\\OOPWeatherMidterm.vcxproj|solutionrelative:OOPWeatherMidterm\\Candlestick.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{90EBFDB4-E7D2-4E4D-984D-4597DBCC276E}|OOPWeatherMidterm\\OOPWeatherMidterm.vcxproj|D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\Candlestick.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{90EBFDB4-E7D2-4E4D-984D-4597DBCC276E}|OOPWeatherMidterm\\OOPWeatherMidterm.vcxproj|solutionrelative:OOPWeatherMidterm\\Candlestick.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{90EBFDB4-E7D2-4E4D-984D-4597DBCC276E}|OOPWeatherMidterm\\OOPWeatherMidterm.vcxproj|D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\RenderWeatherData.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{90EBFDB4-E7D2-4E4D-984D-4597DBCC276E}|OOPWeatherMidterm\\OOPWeatherMidterm.vcxproj|solutionrelative:OOPWeatherMidterm\\RenderWeatherData.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{90EBFDB4-E7D2-4E4D-984D-4597DBCC276E}|OOPWeatherMidterm\\OOPWeatherMidterm.vcxproj|D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\FilterWeatherData.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{90EBFDB4-E7D2-4E4D-984D-4597DBCC276E}|OOPWeatherMidterm\\OOPWeatherMidterm.vcxproj|solutionrelative:OOPWeatherMidterm\\FilterWeatherData.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{90EBFDB4-E7D2-4E4D-984D-4597DBCC276E}|OOPWeatherMidterm\\OOPWeatherMidterm.vcxproj|D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\RenderWeatherData.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{90EBFDB4-E7D2-4E4D-984D-4597DBCC276E}|OOPWeatherMidterm\\OOPWeatherMidterm.vcxproj|solutionrelative:OOPWeatherMidterm\\RenderWeatherData.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{90EBFDB4-E7D2-4E4D-984D-4597DBCC276E}|OOPWeatherMidterm\\OOPWeatherMidterm.vcxproj|D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\WeatherMain.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{90EBFDB4-E7D2-4E4D-984D-4597DBCC276E}|OOPWeatherMidterm\\OOPWeatherMidterm.vcxproj|solutionrelative:OOPWeatherMidterm\\WeatherMain.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{90EBFDB4-E7D2-4E4D-984D-4597DBCC276E}|OOPWeatherMidterm\\OOPWeatherMidterm.vcxproj|D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\FilterWeatherData.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{90EBFDB4-E7D2-4E4D-984D-4597DBCC276E}|OOPWeatherMidterm\\OOPWeatherMidterm.vcxproj|solutionrelative:OOPWeatherMidterm\\FilterWeatherData.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{90EBFDB4-E7D2-4E4D-984D-4597DBCC276E}|OOPWeatherMidterm\\OOPWeatherMidterm.vcxproj|D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\OOPWeatherMidterm.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{90EBFDB4-E7D2-4E4D-984D-4597DBCC276E}|OOPWeatherMidterm\\OOPWeatherMidterm.vcxproj|solutionrelative:OOPWeatherMidterm\\OOPWeatherMidterm.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{90EBFDB4-E7D2-4E4D-984D-4597DBCC276E}|OOPWeatherMidterm\\OOPWeatherMidterm.vcxproj|D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\CSVReader.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{90EBFDB4-E7D2-4E4D-984D-4597DBCC276E}|OOPWeatherMidterm\\OOPWeatherMidterm.vcxproj|solutionrelative:OOPWeatherMidterm\\CSVReader.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{90EBFDB4-E7D2-4E4D-984D-4597DBCC276E}|OOPWeatherMidterm\\OOPWeatherMidterm.vcxproj|D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\Candlestick.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{90EBFDB4-E7D2-4E4D-984D-4597DBCC276E}|OOPWeatherMidterm\\OOPWeatherMidterm.vcxproj|solutionrelative:OOPWeatherMidterm\\Candlestick.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{90EBFDB4-E7D2-4E4D-984D-4597DBCC276E}|OOPWeatherMidterm\\OOPWeatherMidterm.vcxproj|D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\Candlestick.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{90EBFDB4-E7D2-4E4D-984D-4597DBCC276E}|OOPWeatherMidterm\\OOPWeatherMidterm.vcxproj|solutionrelative:OOPWeatherMidterm\\Candlestick.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -63,14 +79,79 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "PredictWeatherData.cpp",
+              "DocumentMoniker": "D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\PredictWeatherData.cpp",
+              "RelativeDocumentMoniker": "OOPWeatherMidterm\\PredictWeatherData.cpp",
+              "ToolTip": "D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\PredictWeatherData.cpp",
+              "RelativeToolTip": "OOPWeatherMidterm\\PredictWeatherData.cpp",
+              "ViewState": "AQIAAAEAAAAAAAAAAAAQwBAAAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-07-03T08:59:24.395Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PredictWeatherData.h",
+              "DocumentMoniker": "D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\PredictWeatherData.h",
+              "RelativeDocumentMoniker": "OOPWeatherMidterm\\PredictWeatherData.h",
+              "ToolTip": "D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\PredictWeatherData.h",
+              "RelativeToolTip": "OOPWeatherMidterm\\PredictWeatherData.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-07-03T08:54:04.917Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "FilterWeatherData.cpp",
+              "DocumentMoniker": "D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\FilterWeatherData.cpp",
+              "RelativeDocumentMoniker": "OOPWeatherMidterm\\FilterWeatherData.cpp",
+              "ToolTip": "D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\FilterWeatherData.cpp",
+              "RelativeToolTip": "OOPWeatherMidterm\\FilterWeatherData.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACgAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-07-01T14:18:15.481Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "FilterWeatherData.h",
+              "DocumentMoniker": "D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\FilterWeatherData.h",
+              "RelativeDocumentMoniker": "OOPWeatherMidterm\\FilterWeatherData.h",
+              "ToolTip": "D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\FilterWeatherData.h",
+              "RelativeToolTip": "OOPWeatherMidterm\\FilterWeatherData.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAACEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-07-01T14:14:57.088Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "RenderWeatherData.h",
               "DocumentMoniker": "D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\RenderWeatherData.h",
               "RelativeDocumentMoniker": "OOPWeatherMidterm\\RenderWeatherData.h",
               "ToolTip": "D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\RenderWeatherData.h",
               "RelativeToolTip": "OOPWeatherMidterm\\RenderWeatherData.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAABdAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAB/AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-06-29T02:25:31.104Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RenderWeatherData.cpp",
+              "DocumentMoniker": "D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\RenderWeatherData.cpp",
+              "RelativeDocumentMoniker": "OOPWeatherMidterm\\RenderWeatherData.cpp",
+              "ToolTip": "D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\RenderWeatherData.cpp",
+              "RelativeToolTip": "OOPWeatherMidterm\\RenderWeatherData.cpp",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAABcAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-06-29T02:26:14.721Z",
               "EditorCaption": ""
             },
             {
@@ -81,45 +162,47 @@
               "RelativeDocumentMoniker": "OOPWeatherMidterm\\WeatherMain.cpp",
               "ToolTip": "D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\WeatherMain.cpp",
               "RelativeToolTip": "OOPWeatherMidterm\\WeatherMain.cpp",
-              "ViewState": "AQIAACoAAAAAAAAAAAAAADoAAAAxAAAA",
+              "ViewState": "AQIAAFQAAAAAAAAAAAAAAIwAAABJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-06-29T01:33:32.632Z"
+              "WhenOpened": "2024-06-29T01:33:32.632Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 8,
               "Title": "WeatherMain.h",
               "DocumentMoniker": "D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\WeatherMain.h",
               "RelativeDocumentMoniker": "OOPWeatherMidterm\\WeatherMain.h",
               "ToolTip": "D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\WeatherMain.h",
               "RelativeToolTip": "OOPWeatherMidterm\\WeatherMain.h",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAABgAAAAcAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-06-29T01:29:33.625Z"
+              "WhenOpened": "2024-06-29T01:29:33.625Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Candlestick.cpp",
-              "DocumentMoniker": "D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\Candlestick.cpp",
-              "RelativeDocumentMoniker": "OOPWeatherMidterm\\Candlestick.cpp",
-              "ToolTip": "D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\Candlestick.cpp",
-              "RelativeToolTip": "OOPWeatherMidterm\\Candlestick.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-06-29T00:53:23.548Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 10,
               "Title": "OOPWeatherMidterm.cpp",
               "DocumentMoniker": "D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\OOPWeatherMidterm.cpp",
               "RelativeDocumentMoniker": "OOPWeatherMidterm\\OOPWeatherMidterm.cpp",
               "ToolTip": "D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\OOPWeatherMidterm.cpp",
               "RelativeToolTip": "OOPWeatherMidterm\\OOPWeatherMidterm.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAABAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-06-28T18:54:03.412Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "CSVReader.h",
+              "DocumentMoniker": "D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\CSVReader.h",
+              "RelativeDocumentMoniker": "OOPWeatherMidterm\\CSVReader.h",
+              "ToolTip": "D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\CSVReader.h",
+              "RelativeToolTip": "OOPWeatherMidterm\\CSVReader.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-06-28T18:58:07.181Z"
             },
             {
               "$type": "Document",
@@ -129,45 +212,35 @@
               "RelativeDocumentMoniker": "OOPWeatherMidterm\\CSVReader.cpp",
               "ToolTip": "D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\CSVReader.cpp",
               "RelativeToolTip": "OOPWeatherMidterm\\CSVReader.cpp",
-              "ViewState": "AQIAABIAAAAAAAAAAAAAAD0AAAA/AAAA",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAAFAAAAA0AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-06-28T19:10:45.803Z"
+              "WhenOpened": "2024-06-28T19:10:45.803Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "RenderWeatherData.cpp",
-              "DocumentMoniker": "D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\RenderWeatherData.cpp",
-              "RelativeDocumentMoniker": "OOPWeatherMidterm\\RenderWeatherData.cpp",
-              "ToolTip": "D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\RenderWeatherData.cpp",
-              "RelativeToolTip": "OOPWeatherMidterm\\RenderWeatherData.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-06-29T02:26:14.721Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 4,
               "Title": "Candlestick.h",
               "DocumentMoniker": "D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\Candlestick.h",
               "RelativeDocumentMoniker": "OOPWeatherMidterm\\Candlestick.h",
               "ToolTip": "D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\Candlestick.h",
               "RelativeToolTip": "OOPWeatherMidterm\\Candlestick.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAtAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAATAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-06-28T18:58:28.992Z"
+              "WhenOpened": "2024-06-28T18:58:28.992Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "CSVReader.h",
-              "DocumentMoniker": "D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\CSVReader.h",
-              "RelativeDocumentMoniker": "OOPWeatherMidterm\\CSVReader.h",
-              "ToolTip": "D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\CSVReader.h",
-              "RelativeToolTip": "OOPWeatherMidterm\\CSVReader.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAHAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-06-28T18:58:07.181Z"
+              "DocumentIndex": 12,
+              "Title": "Candlestick.cpp",
+              "DocumentMoniker": "D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\Candlestick.cpp",
+              "RelativeDocumentMoniker": "OOPWeatherMidterm\\Candlestick.cpp",
+              "ToolTip": "D:\\GitHub\\Cloned Repositories\\UniversityOfLondon_Year2\\OOPWeatherMidterm\\OOPWeatherMidterm\\Candlestick.cpp",
+              "RelativeToolTip": "OOPWeatherMidterm\\Candlestick.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAA3AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-06-29T00:53:23.548Z"
             }
           ]
         }

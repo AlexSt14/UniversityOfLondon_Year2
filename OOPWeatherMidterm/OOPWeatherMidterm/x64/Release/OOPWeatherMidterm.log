@@ -1,14 +1,10 @@
-﻿  Candlestick.cpp
-  CSVReader.cpp
-D:\GitHub\Cloned Repositories\UniversityOfLondon_Year2\OOPWeatherMidterm\OOPWeatherMidterm\CSVReader.cpp(40,27): warning C4101: 'e': unreferenced local variable
-D:\GitHub\Cloned Repositories\UniversityOfLondon_Year2\OOPWeatherMidterm\OOPWeatherMidterm\CSVReader.cpp(57,35): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-D:\GitHub\Cloned Repositories\UniversityOfLondon_Year2\OOPWeatherMidterm\OOPWeatherMidterm\CSVReader.cpp(59,30): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-  OOPWeatherMidterm.cpp
-  RenderWeatherData.cpp
-  WeatherMain.cpp
+﻿  PredictWeatherData.cpp
+D:\GitHub\Cloned Repositories\UniversityOfLondon_Year2\OOPWeatherMidterm\OOPWeatherMidterm\PredictWeatherData.cpp(23,56): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\GitHub\Cloned Repositories\UniversityOfLondon_Year2\OOPWeatherMidterm\OOPWeatherMidterm\PredictWeatherData.cpp(24,54): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\GitHub\Cloned Repositories\UniversityOfLondon_Year2\OOPWeatherMidterm\OOPWeatherMidterm\PredictWeatherData.cpp(25,52): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
   Generating code
-  700 of 711 functions (98.5%) were compiled, the rest were copied from previous compilation.
-    23 functions were new in current compilation
-    2 functions had inline decision re-evaluated but remain unchanged
+  2 of 939 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   OOPWeatherMidterm.vcxproj -> D:\GitHub\Cloned Repositories\UniversityOfLondon_Year2\OOPWeatherMidterm\x64\Release\OOPWeatherMidterm.exe

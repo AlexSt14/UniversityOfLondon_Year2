@@ -6,6 +6,8 @@
 #include <vector>
 #include <map>
 
+//This class has been created for TASK 1 of the midterm
+
 CSVReader::CSVReader()
 {
 }
@@ -66,7 +68,7 @@ std::vector<std::string> CSVReader::tokenise(std::string csvLine, char separator
 
 	return tokens;
 }
-
+//This function processes the yearly data and adds it to the allData map that will be ready to be rendered
 void CSVReader::processYearlyData(std::map<std::string, std::vector<std::pair<int, double>>> allRawData)
 {
 	//Looping through countries

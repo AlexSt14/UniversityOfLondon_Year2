@@ -30,6 +30,12 @@
     <ClCompile Include="RenderWeatherData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FilterWeatherData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PredictWeatherData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CSVReader.h">
@@ -42,6 +48,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RenderWeatherData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FilterWeatherData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PredictWeatherData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

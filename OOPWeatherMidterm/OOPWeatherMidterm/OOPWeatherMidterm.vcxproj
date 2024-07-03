@@ -43,7 +43,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -129,13 +129,17 @@
   <ItemGroup>
     <ClCompile Include="Candlestick.cpp" />
     <ClCompile Include="CSVReader.cpp" />
+    <ClCompile Include="FilterWeatherData.cpp" />
     <ClCompile Include="OOPWeatherMidterm.cpp" />
+    <ClCompile Include="PredictWeatherData.cpp" />
     <ClCompile Include="RenderWeatherData.cpp" />
     <ClCompile Include="WeatherMain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Candlestick.h" />
     <ClInclude Include="CSVReader.h" />
+    <ClInclude Include="FilterWeatherData.h" />
+    <ClInclude Include="PredictWeatherData.h" />
     <ClInclude Include="RenderWeatherData.h" />
     <ClInclude Include="WeatherMain.h" />
   </ItemGroup>
