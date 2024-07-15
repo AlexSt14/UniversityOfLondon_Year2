@@ -4,6 +4,8 @@
 #include <string>
 #include "Candlestick.h"
 
+//This class has been created for TASK 4 of the midterm
+//See the cpp file for clearly labelled sections of code written by me
 class PredictWeatherData
 {
 public:
@@ -12,6 +14,6 @@ public:
 	static std::map<std::string, std::vector<Candlestick>> predictWeather(const std::map<std::string, std::vector<Candlestick>>& data);
 private:
 	/*Calculates the SMA value*/
-	static double calculateSMA(double sum, int size);
+	static double calculateWMA(double sum, int weightSum);
 };
 

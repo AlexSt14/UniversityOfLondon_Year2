@@ -5,6 +5,7 @@
 #include <string>
 
 //This class has been created for TASK 2 of the midterm
+//See the cpp file for clearly labelled sections of code written by me
 
 class RenderWeatherData
 {

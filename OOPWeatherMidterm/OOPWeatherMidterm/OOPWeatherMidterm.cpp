@@ -5,9 +5,6 @@ We are only initializing and running the app here, maintaining a clean main func
 #include <iostream>
 #include "CSVReader.h"
 #include "WeatherMain.h"
-#include <Windows.h>
-#include <fcntl.h>
-#include <io.h>
 
 int main()
 {

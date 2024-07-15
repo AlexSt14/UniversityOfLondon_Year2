@@ -4,11 +4,13 @@
 
 //This class has been created for TASK 3 of the midterm
 
-FilterWeatherData::FilterWeatherData() {
-
+FilterWeatherData::FilterWeatherData() 
+{
 }
 //Filter the data by country, return a data structure only containing candlesticks of that country or contries
-std::map<std::string, std::vector<Candlestick>> FilterWeatherData::filterDataCountry(const std::map<std::string, std::vector<Candlestick>>& data, std::vector<std::string> countries) {
+//THIS CODE HAS BEEN WRITTEN BY ME WITHOUT ASSISTANCE
+std::map<std::string, std::vector<Candlestick>> FilterWeatherData::filterDataCountry(const std::map<std::string, std::vector<Candlestick>>& data, std::vector<std::string> countries) 
+{
 	std::map<std::string, std::vector<Candlestick>> filteredData;
 	//Filtering the data by country
 	for (const auto& country : countries) {
@@ -20,7 +22,9 @@ std::map<std::string, std::vector<Candlestick>> FilterWeatherData::filterDataCou
 	return filteredData;
 }
 //Filter the data by year range, return a data structure only containing candlesticks of that year range
-std::map<std::string, std::vector<Candlestick>> FilterWeatherData::filterDataYear(const std::map<std::string, std::vector<Candlestick>>& data, std::vector<std::string> years) {
+//THIS CODE HAS BEEN WRITTEN BY ME WITHOUT ASSISTANCE
+std::map<std::string, std::vector<Candlestick>> FilterWeatherData::filterDataYear(const std::map<std::string, std::vector<Candlestick>>& data, std::vector<std::string> years) 
+{
 	std::map<std::string, std::vector<Candlestick>> filteredData;
 	//In case there are more than 2 elements in the vector, we will throw an exception
 	if (years.size() != 2) throw std::runtime_error("Invalid year range! You must only type 2 elements, example: 2010,2019");
@@ -53,7 +57,9 @@ std::map<std::string, std::vector<Candlestick>> FilterWeatherData::filterDataYea
 	return filteredData;
 }
 //Filter the data by country and year range, return a data structure only containing candlesticks of that country or contries and year range
-std::map<std::string, std::vector<Candlestick>> FilterWeatherData::filterDataCountryYear(const std::map<std::string, std::vector<Candlestick>>& data, std::vector<std::string> countries, std::vector<std::string> years) {
+//THIS CODE HAS BEEN WRITTEN BY ME WITHOUT ASSISTANCE
+std::map<std::string, std::vector<Candlestick>> FilterWeatherData::filterDataCountryYear(const std::map<std::string, std::vector<Candlestick>>& data, std::vector<std::string> countries, std::vector<std::string> years) 
+{
 	std::map<std::string, std::vector<Candlestick>> filteredData;
 	try {
 		filteredData = filterDataYear(filterDataCountry(data, countries), years);

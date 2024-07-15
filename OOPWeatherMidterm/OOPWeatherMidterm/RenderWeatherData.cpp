@@ -2,14 +2,6 @@
 #include <iostream>
 #include <iomanip>
 #include <algorithm>
-#include <Windows.h>
-#ifdef min
-#undef min
-#endif
-
-#ifdef max
-#undef max
-#endif
 
 //This class has been created for TASK 2 of the midterm
 
@@ -19,10 +11,9 @@ RenderWeatherData::RenderWeatherData()
 /* Function to render the weather data
 A LOT of trial and error went into this function until I managed to get the plot to actually work and look decent
 I am aware it might not be the best way to do it, but it works */
+//THIS CODE HAS BEEN WRITTEN BY ME WITHOUT ASSISTANCE
 void RenderWeatherData::renderWeatherData(const std::map<std::string, std::vector<Candlestick>>& allData, double minTemp, double maxTemp)
 {
-	SetConsoleOutputCP(CP_UTF8);
-	setvbuf(stdout, nullptr, _IOFBF, 1000);
 	int numRows { 45 };
 	int numCols { 45 };
 	double temperatureRangePerRow { (maxTemp - minTemp) / numRows };
@@ -90,6 +81,7 @@ void RenderWeatherData::renderWeatherData(const std::map<std::string, std::vecto
 	}
 }
 //Function to get the right row for the temperature in the plot
+//THIS CODE HAS BEEN WRITTEN BY ME WITHOUT ASSISTANCE
 int RenderWeatherData::getRow(double temperature, double minTemperature, double temperatureRangePerRow, int numRows)
 {
 	return numRows - 1 - static_cast<int>((temperature - minTemperature) / temperatureRangePerRow);

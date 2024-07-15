@@ -4,7 +4,8 @@
 #include "FilterWeatherData.h"
 #include "PredictWeatherData.h"
 
-//This class serves for TASK1, TASK2, and TASK 3 of the midterm
+//This class serves for TASK1, TASK2, TASK3, and TASK4 of the midterm
+//See the cpp file for clearly labelled sections of code written by me
 
 class WeatherMain
 {
@@ -29,6 +30,8 @@ private:
 	int getUserOption();
 	/*This will process the user option*/
 	void processUserOption(int option);
+	//This will print all data to the console
+	void printAllData();
 	/*This will calculate the minTemp and maxTemp*/
 	static std::pair<double,double> calculateMinMaxTemp(const std::map<std::string, std::vector<Candlestick>>& data);
 	/*This will get the available countries in the data*/

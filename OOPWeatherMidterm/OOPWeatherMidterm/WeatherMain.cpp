@@ -1,16 +1,16 @@
 #include "WeatherMain.h"
 #include <iostream>
 
-//This class serves for TASK1, TASK2, and TASK 3 of the midterm
+//This class serves for TASK1, TASK2, TASK3, and TASK4 of the midterm
 
 WeatherMain::WeatherMain()
 {
 }
 //Starting the app by reading the data from the csv file and printing menu
+//THIS CODE has been written by me but inspired from how the MerkelMain project was structured
 void WeatherMain::startApp()
 {
-	std::map<std::string, std::vector<std::pair<int, double>>> weatherData = reader.readWeatherData("weather.csv");
-	reader.processYearlyData(weatherData);
+	reader.readWeatherData("weather.csv");
 	int userOption;
 	while (isRunning)
 	{
@@ -20,6 +20,7 @@ void WeatherMain::startApp()
 	}
 }
 //Printing the menu
+//THIS CODE has been written by me but inspired from how the MerkelMain project was structured
 void WeatherMain::printMenu()
 {
 	std::cout << "Weather App. Collated Yearly Data since 1980!" << std::endl;
@@ -27,9 +28,11 @@ void WeatherMain::printMenu()
 	std::cout << "2. Filter Viewed Data" << std::endl;
 	std::cout << "3. Predict Weather Data" << std::endl;
 	std::cout << "4. Help" << std::endl;
-	std::cout << "5. Exit" << std::endl;
+	std::cout << "5. Print all data" << std::endl;
+	std::cout << "6. Exit" << std::endl;
 }
 //Printing the weather data for all countries
+//THIS CODE HAS BEEN WRITTEN BY ME WITHOUT ASSISTANCE
 void WeatherMain::printWeatherData()
 {
 	std::cout << "Printing Weather Data..." << std::endl;
@@ -39,7 +42,9 @@ void WeatherMain::printWeatherData()
 	renderer.renderWeatherData(reader.allData, minMaxTemp.first, minMaxTemp.second);
 }
 //Printing the filtered weather data menu
-void WeatherMain::filterWeatherData() {
+//THIS CODE HAS BEEN WRITTEN BY ME WITHOUT ASSISTANCE
+void WeatherMain::filterWeatherData() 
+{
 	std::pair<double, double> minMaxTemp;	
 	//If user wants to filter the data by both countries and year range at the same time we call the combined function
 	std::cout << "Enter 1 if you want to filter the data by both countries and year range at the same time. Enter 2 if you want to filter by country or year range separately." << std::endl;
@@ -64,9 +69,9 @@ void WeatherMain::filterWeatherData() {
 				std::string country;
 				std::cin.ignore();	//Clearing the input buffer before taking the line
 				std::getline(std::cin, country);
-				std::map<std::string, std::vector<Candlestick>> filteredData = filter.filterDataCountry(reader.allData, reader.tokenise(country, ','));
-				minMaxTemp = calculateMinMaxTemp(filteredData);
-				renderer.renderWeatherData(filteredData, minMaxTemp.first, minMaxTemp.second);
+				filter.filteredData = filter.filterDataCountry(reader.allData, reader.tokenise(country, ','));
+				minMaxTemp = calculateMinMaxTemp(filter.filteredData);
+				renderer.renderWeatherData(filter.filteredData, minMaxTemp.first, minMaxTemp.second);
 			}
 			catch (const std::exception& e) {
 				std::cout << e.what() << std::endl;
@@ -80,9 +85,9 @@ void WeatherMain::filterWeatherData() {
 				std::string years;
 				std::cin.ignore();
 				std::getline(std::cin, years);
-				std::map<std::string, std::vector<Candlestick>> filteredData = filter.filterDataYear(reader.allData, reader.tokenise(years, ','));
-				minMaxTemp = calculateMinMaxTemp(filteredData);
-				renderer.renderWeatherData(filteredData, minMaxTemp.first, minMaxTemp.second);
+				filter.filteredData = filter.filterDataYear(reader.allData, reader.tokenise(years, ','));
+				minMaxTemp = calculateMinMaxTemp(filter.filteredData);
+				renderer.renderWeatherData(filter.filteredData, minMaxTemp.first, minMaxTemp.second);
 			}
 			catch (const std::exception& e) {
 				std::cout << e.what() << std::endl;
@@ -100,7 +105,9 @@ void WeatherMain::filterWeatherData() {
 	}
 }
 //Filtering the weather data by both countries and year range at the same time
-void WeatherMain::filterWeatherDataCombined() {
+//THIS CODE HAS BEEN WRITTEN BY ME WITHOUT ASSISTANCE
+void WeatherMain::filterWeatherDataCombined() 
+{
 	try {
 		getAvailableCountries(reader.allData);
 		std::cout << std::endl;
@@ -114,9 +121,9 @@ void WeatherMain::filterWeatherDataCombined() {
 		std::cout << "Enter the years separated by comma: ";
 		std::string years;
 		std::getline(std::cin, years);
-		std::map<std::string, std::vector<Candlestick>> filteredData = filter.filterDataCountryYear(reader.allData, reader.tokenise(country, ','), reader.tokenise(years, ','));
-		std::pair<double, double> minMaxTemp = calculateMinMaxTemp(filteredData);
-		renderer.renderWeatherData(filteredData, minMaxTemp.first, minMaxTemp.second);
+		filter.filteredData = filter.filterDataCountryYear(reader.allData, reader.tokenise(country, ','), reader.tokenise(years, ','));
+		std::pair<double, double> minMaxTemp = calculateMinMaxTemp(filter.filteredData);
+		renderer.renderWeatherData(filter.filteredData, minMaxTemp.first, minMaxTemp.second);
 	}
 	catch (const std::exception& e) {
 		std::cout << e.what() << std::endl;
@@ -124,7 +131,9 @@ void WeatherMain::filterWeatherDataCombined() {
 	}	
 }
 //Predicting weather on the upcoming year
-void WeatherMain::predictWeather() {
+//THIS CODE HAS BEEN WRITTEN BY ME WITHOUT ASSISTANCE
+void WeatherMain::predictWeather() 
+{
 	getAvailableCountries(reader.allData);
 	std::cout << std::endl;
 	std::cout << "To choose a country, you must enter the 2 letter country code. Make sure to type it in UPPERCASE." << std::endl;
@@ -137,12 +146,13 @@ void WeatherMain::predictWeather() {
 	std::cout << "Enter the years separated by comma: ";
 	std::string years;
 	std::getline(std::cin, years);
-	std::map<std::string, std::vector<Candlestick>> filteredData = filter.filterDataCountryYear(reader.allData, reader.tokenise(country, ','), reader.tokenise(years, ','));
-	std::pair<double,double> minMaxTemp = calculateMinMaxTemp(filteredData);
+	filter.filteredData = filter.filterDataCountryYear(reader.allData, reader.tokenise(country, ','), reader.tokenise(years, ','));
+	std::pair<double,double> minMaxTemp = calculateMinMaxTemp(filter.filteredData);
 	std::cout << "Predicting Weather Data..." << std::endl;
-	renderer.renderWeatherData(predictor.predictWeather(filteredData),minMaxTemp.first,minMaxTemp.second);
+	renderer.renderWeatherData(predictor.predictWeather(filter.filteredData),minMaxTemp.first,minMaxTemp.second);
 }
 //Printing the help menu
+//THIS CODE has been written by me but inspired from how the MerkelMain project was structured
 void WeatherMain::printHelp()
 {
 	std::cout << "This is a weather app that displays weather data for different countries and years." << std::endl;
@@ -153,7 +163,7 @@ void WeatherMain::printHelp()
 	printMenu();
 }
 //Getting the user option
-//This function and the processUserOption function below it, were taken from the MerkelMain project and reused here
+//THIS CODE has been written by me but inspired from how the MerkelMain project was structured
 int WeatherMain::getUserOption()
 {
 	int option;
@@ -162,6 +172,7 @@ int WeatherMain::getUserOption()
 	return option;
 }
 //Processing the user option
+//THIS CODE has been written by me but inspired from how the MerkelMain project was structured
 void WeatherMain::processUserOption(int option)
 {
 	switch (option)
@@ -179,6 +190,9 @@ void WeatherMain::processUserOption(int option)
 		printHelp();
 		break;
 	case 5:
+		printAllData();
+		break;
+	case 6:
 		std::cout << "Exiting the app..." << std::endl;
 		isRunning = false;
 		break;
@@ -189,7 +203,9 @@ void WeatherMain::processUserOption(int option)
 	}
 }
 //Calculating the min and max temperatures required for plotting the data
-std::pair<double, double> WeatherMain::calculateMinMaxTemp(const std::map<std::string, std::vector<Candlestick>>& data) {
+//THIS CODE HAS BEEN WRITTEN BY ME WITHOUT ASSISTANCE
+std::pair<double, double> WeatherMain::calculateMinMaxTemp(const std::map<std::string, std::vector<Candlestick>>& data) 
+{
 	double minTemp = 1000;
 	double maxTemp = -1000;
 	for (const auto& data : data) {
@@ -203,9 +219,22 @@ std::pair<double, double> WeatherMain::calculateMinMaxTemp(const std::map<std::s
 	return std::make_pair(minTemp, maxTemp);
 }
 //Getting the available countries in the data
-void WeatherMain::getAvailableCountries(const std::map<std::string, std::vector<Candlestick>>& data) {
+//THIS CODE HAS BEEN WRITTEN BY ME WITHOUT ASSISTANCE
+void WeatherMain::getAvailableCountries(const std::map<std::string, std::vector<Candlestick>>& data) 
+{
 	std::cout << "Available countries: ";
 	for (const auto& country : data) {
 		std::cout << country.first << " ";
+	}
+}
+//Printing all data to the console from the allData map
+//THIS CODE HAS BEEN WRITTEN BY ME WITHOUT ASSISTANCE
+void WeatherMain::printAllData() 
+{
+	for (const auto& country : reader.allData) {
+		std::cout << "Country: " << country.first << std::endl;
+		for (const auto& candle : country.second) {
+			std::cout << "Year: " << candle.year << " Open: " << candle.open << " Close: " << candle.close << " High: " << candle.high << " Low: " << candle.low << std::endl;
+		}
 	}
 }

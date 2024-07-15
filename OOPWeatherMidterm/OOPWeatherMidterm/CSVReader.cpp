@@ -12,7 +12,8 @@ CSVReader::CSVReader()
 {
 }
 //This function reads the weather data from the csv file and returns a map of data with country and vector pairs of year and temperature
-std::map<std::string, std::vector<std::pair<int, double>>> CSVReader::readWeatherData(std::string filename)
+//THIS CODE HAS BEEN WRITTEN BY ME WITHOUT ASSISTANCE
+void CSVReader::readWeatherData(std::string filename)
 {
 	std::map<std::string, std::vector<std::pair<int, double>>> allData;
 	std::ifstream file(filename);
@@ -48,9 +49,11 @@ std::map<std::string, std::vector<std::pair<int, double>>> CSVReader::readWeathe
 	{
 		std::cout << "Could not open file: " << filename << std::endl;
 	}
-	return allData;
+	//Processing the yearly data into candlestick objects
+	processYearlyData(allData);
 }
-//Tokenise the csv line by separator, this function was taken from the MerkelMaine project and reused here
+//Tokenise the csv line by separator
+//THIS CODE has been taken from MerkelMain project and reused here
 std::vector<std::string> CSVReader::tokenise(std::string csvLine, char separator)
 {
 	std::vector<std::string> tokens;
@@ -69,6 +72,7 @@ std::vector<std::string> CSVReader::tokenise(std::string csvLine, char separator
 	return tokens;
 }
 //This function processes the yearly data and adds it to the allData map that will be ready to be rendered
+//THIS CODE HAS BEEN WRITTEN BY ME WITHOUT ASSISTANCE
 void CSVReader::processYearlyData(std::map<std::string, std::vector<std::pair<int, double>>> allRawData)
 {
 	//Looping through countries
