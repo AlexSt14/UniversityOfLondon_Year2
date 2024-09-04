@@ -1,0 +1,15 @@
+﻿  Main.cpp
+  MainComponent.cpp
+D:\University Of London\OOP\FINAL Project\DJApp\DJApp\Source\Main.cpp(24,42): warning C4100: 'commandLine': unreferenced formal parameter
+D:\University Of London\OOP\FINAL Project\DJApp\DJApp\Source\MainComponent.cpp(34,72): warning C4100: 'sampleRate': unreferenced formal parameter
+D:\University Of London\OOP\FINAL Project\DJApp\DJApp\Source\MainComponent.cpp(34,40): warning C4100: 'samplesPerBlockExpected': unreferenced formal parameter
+D:\University Of London\OOP\FINAL Project\DJApp\DJApp\Source\Main.cpp(46,54): warning C4100: 'commandLine': unreferenced formal parameter
+D:\University Of London\OOP\FINAL Project\DJApp\DJApp\Source\MainComponent.cpp(82,44): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+D:\University Of London\OOP\FINAL Project\DJApp\DJApp\Source\MainComponent.cpp(83,51): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+D:\University Of London\OOP\FINAL Project\DJApp\DJApp\Source\MainComponent.cpp(83,28): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+D:\University Of London\OOP\FINAL Project\DJApp\DJApp\Source\MainComponent.cpp(84,57): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+D:\University Of London\OOP\FINAL Project\DJApp\DJApp\Source\MainComponent.cpp(84,40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+D:\University Of London\OOP\FINAL Project\DJApp\DJApp\Source\MainComponent.cpp(87,43): warning C4100: 'button': unreferenced formal parameter
+  Generating code
+  Finished generating code
+  DJApp_App.vcxproj -> D:\University Of London\OOP\FINAL Project\DJApp\DJApp\Builds\VisualStudio2022\x64\Release\App\DJApp.exe
