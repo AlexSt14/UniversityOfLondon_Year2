@@ -10,7 +10,7 @@ You are able to filter the weather data by country and by years. You are also ab
 - OOP Final Assignment DJ Application --> [Object Oriented Programming assignment of a DJ Application](https://github.com/AlexSt14/UniversityOfLondon_Year2/tree/main/DJApp%20Project) <br>
 Developed using Visual Studio 2022. It was created with Juce 8 using Projucer. <br>
 It promotes Object Oriented Programming and encapsulation. <br>
-- Graphics Programming Final Assignment --> [Manipulation of the pixel array for filters using p5.js and ML5.js for ML detection such as faces and hands](https://github.com/AlexSt14/UniversityOfLondon_Year2/tree/main/DJApp%20Project) <br>
+- Graphics Programming Final Assignment --> [Manipulation of the pixel array for filters using p5.js and ML5.js for ML detection such as faces and hands](https://github.com/AlexSt14/UniversityOfLondon_Year2/tree/main/GP%20Filters%20and%20pixel%20array) <br>
 It does include some OOP aspects. <br>
 It was developed using p5.js, alongside ML5.js for machine learning face and hands detection. It runs in a browser and was developed to use as little resources as possible, only manipulating the pixel array when necessary. <br>
 - Graphics Programming Mini Projects --> [Small projects created during the module, from image filters to physics](https://github.com/AlexSt14/UniversityOfLondon_Year2/tree/main/Grahpics%20Programming%20and%20Physics) <br>
