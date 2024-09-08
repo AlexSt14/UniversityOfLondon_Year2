@@ -150,7 +150,6 @@ void MyLookAndFeel::drawLinearSlider(Graphics& g, int x, int y, int width, int h
 				g.fillRect(sliderX, mappedPos - thickness * 0.5f, sliderWidth, heightAdjustment);
 			}
 		}
-
 		
 		//Drawing the slider track
 		g.setColour(trackColour);
@@ -165,5 +164,4 @@ void MyLookAndFeel::drawLinearSlider(Graphics& g, int x, int y, int width, int h
 		g.setColour(Colour(thumbBorder));
 		g.drawRect(static_cast<int>(thumbX), static_cast<int>(sliderPos - thumbN1Height * 0.5f), static_cast<int>(thumbWidth), static_cast<int>(thumbN1Height));		
 	}
-
 }

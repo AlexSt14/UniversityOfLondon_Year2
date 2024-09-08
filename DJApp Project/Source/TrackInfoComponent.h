@@ -48,10 +48,13 @@ public:
     int getNumTracks();
     /*Returns a pointer to the tracks data structure*/
     std::vector<TrackInfoComponent::TrackInfo>* getTracks();
-    /*Returns the track info of a specific track, it requires the index of the track*/
+    /*Returns the track name info of a specific track, it requires the index of the track*/
     String getTrackName(int index) const;
+    /*Returns the track artist info of a specific track, it requires the index of the track*/
     String getTrackArtist(int index) const;
+    /*Returns the track album info of a specific track, it requires the index of the track*/
     String getTrackAlbum(int index) const;
+    /*Returns the track length info of a specific track, it requires the index of the track*/
     String getTrackLength(int index) const;
     /*Tracks data structure holding the struct as the type*/
     std::vector<TrackInfo> tracks;
@@ -62,8 +65,7 @@ public:
 
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TrackInfoComponent)
-
-    
+    //Current change type required for playlistComponent, to know what type of change has been made
     TrackChangeType currentChangeType;
     AudioFormatManager& formatManager;
 };

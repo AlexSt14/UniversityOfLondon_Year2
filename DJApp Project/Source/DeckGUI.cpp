@@ -33,6 +33,7 @@ DeckGUI::DeckGUI(DJAudioPlayer* _player,
     addAndMakeVisible(roomSizeSlider);
     addAndMakeVisible(dampingSlider);
     addAndMakeVisible(widthSlider);
+
     //Labels
     addAndMakeVisible(highLabel);
     highLabel.setText("HI", dontSendNotification);
@@ -105,6 +106,7 @@ DeckGUI::DeckGUI(DJAudioPlayer* _player,
     positionSlider.addListener(this);
     highSlider.addListener(this);
     wetDrySlider.addListener(this);
+
     //Sliders ranges
     volSlider.setRange(0.0, 1.0);
     speedSlider.setRange(0.0, 5.0);
@@ -116,7 +118,7 @@ DeckGUI::DeckGUI(DJAudioPlayer* _player,
     roomSizeSlider.setRange(0.0, 1.0);
     dampingSlider.setRange(0.0, 1.0);
     widthSlider.setRange(0.0, 1.0);
-
+    //Timer callback every 500ms
     startTimer(500);
 }
 
@@ -124,15 +126,15 @@ DeckGUI::~DeckGUI()
 {
     stopTimer();
 }
-
+/*Inherited from Component class, paints over the component body*/
 void DeckGUI::paint (juce::Graphics& g)
 {
     g.fillAll (getLookAndFeel().findColour(juce::ResizableWindow::backgroundColourId));   // clear the background
 
     g.setColour (juce::Colours::grey);
-    g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
+    g.drawRect (getLocalBounds(), 1); 
 }
-
+/*Inherited from Component class, resizes the components inside the deck*/
 void DeckGUI::resized()
 {
     double rowHeight = getHeight() / 11;
@@ -163,10 +165,10 @@ void DeckGUI::resized()
     playButton.setBounds(0, rowHeight * 10, btnWidth, btnHeight);
     stopButton.setBounds(btnWidth, rowHeight * 10, btnWidth, btnHeight);
     loadButton.setBounds(btnWidth*2, rowHeight * 10, btnWidth, rowHeight);
-    wetDrySlider.setBounds(sliderWidth * 3, rowHeight * 2 - 20, thumbWidth, thumbHeight);
-    roomSizeSlider.setBounds(sliderWidth * 3 + thumbWidth, rowHeight * 2 - 20, thumbWidth, thumbHeight);
-    dampingSlider.setBounds(sliderWidth * 3, rowHeight * 2 + thumbHeight - 20, thumbWidth, thumbHeight);
-    widthSlider.setBounds(sliderWidth * 3 + thumbWidth, rowHeight * 2 + thumbHeight - 20, thumbWidth, thumbHeight);
+    wetDrySlider.setBounds(sliderWidth * 3 + 10, rowHeight * 2, thumbWidth, thumbHeight - 20);
+    roomSizeSlider.setBounds(sliderWidth * 3 + thumbWidth+40, rowHeight * 2, thumbWidth, thumbHeight - 20);
+    dampingSlider.setBounds(sliderWidth * 3 + 10, rowHeight * 2 + thumbHeight - 20, thumbWidth, thumbHeight - 20);
+    widthSlider.setBounds(sliderWidth * 3 + thumbWidth+40, rowHeight * 2 + thumbHeight - 20, thumbWidth, thumbHeight - 20);
     //Labels
     highLabel.setBounds(eqX, eqY +eqHeight - 20, eqWidth, 20);
     midLabel.setBounds(eqX + eqWidth, eqY + eqHeight - 20, eqWidth, 20);
@@ -174,10 +176,10 @@ void DeckGUI::resized()
     volLabel.setBounds(0, rowHeight * 7-20, sliderWidth, 20);
     speedLabel.setBounds(sliderWidth, rowHeight * 7-20, sliderWidth, 20);
     positionLabel.setBounds(sliderWidth * 2, rowHeight * 7-20, sliderWidth, 20);
-    wetDryLabel.setBounds(sliderWidth * 3, rowHeight * 2 + thumbHeight - 40, thumbWidth, 20);
-    roomSizeLabel.setBounds(sliderWidth * 3 + thumbWidth, rowHeight * 2 + thumbHeight - 40, thumbWidth, 20);
-    dampingLabel.setBounds(sliderWidth * 3, rowHeight * 2 + thumbHeight + 20, thumbWidth, 20);
-    widthSliderLabel.setBounds(sliderWidth * 3 + thumbWidth, rowHeight * 2 + thumbHeight + 20, thumbWidth, 20);
+    wetDryLabel.setBounds(sliderWidth * 3 + 10, rowHeight * 2 + thumbHeight - 40, thumbWidth, 20);
+    roomSizeLabel.setBounds(sliderWidth * 3 + thumbWidth+40, rowHeight * 2 + thumbHeight - 40, thumbWidth, 20);
+    dampingLabel.setBounds(sliderWidth * 3 + 10, rowHeight * 2 + thumbHeight * 2 - 50, thumbWidth, 20);
+    widthSliderLabel.setBounds(sliderWidth * 3 + thumbWidth+40, rowHeight * 2 + thumbHeight * 2 - 50, thumbWidth, 20);
 }
 /*Implement button listener*/
 void DeckGUI::buttonClicked(Button* button)
@@ -190,7 +192,7 @@ void DeckGUI::buttonClicked(Button* button)
     {
         player->stop();
     }
-    else if (button == &loadButton)
+    else if (button == &loadButton)     //Loading files through the file browser
     {
         auto fileChooserFlags = FileBrowserComponent::canSelectFiles;
         fChooser.launchAsync(fileChooserFlags, [this](const FileChooser& chooser)
@@ -233,6 +235,7 @@ void DeckGUI::filesDropped(const StringArray& files, int x, int y)
     DBG(files[0]);
     if (files.size() == 1) {
         player->loadURL(URL{ File{files[0]} });
+        waveform.loadURL(URL{ File{files[0]} });
         trackInfo.addTrack(File{files[0]});
         setSlidersPosition();
     }
@@ -253,7 +256,7 @@ void DeckGUI::timerCallback()
     waveform.setPosition(player->getPositionRelative(), player->getTrackPosition());
     positionSlider.setValue(player->getPositionRelative());
 }
-/*Plays a track on either deck 1 or deck 2, called from MainComponent*/
+/*Plays a track on a deck, called from MainComponent, that's where it is decided which deck will be played on*/
 void DeckGUI::playTrack(const juce::URL& trackURL)
 {
     player->loadURL(trackURL);

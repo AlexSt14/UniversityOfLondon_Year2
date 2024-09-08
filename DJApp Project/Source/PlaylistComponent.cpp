@@ -27,7 +27,6 @@ PlaylistComponent::PlaylistComponent(TrackInfoComponent& trackInfoToUse) : track
     addAndMakeVisible(tableComponent);
     trackInfo.addChangeListener(this);  //Add listener to track info
     loadPlaylistFromJson();
-
 }
 
 PlaylistComponent::~PlaylistComponent()
@@ -35,14 +34,14 @@ PlaylistComponent::~PlaylistComponent()
     trackInfo.removeChangeListener(this);
     setLookAndFeel(nullptr);
 }
-
+/*Inherited from Component class, paints over the component body*/
 void PlaylistComponent::paint (juce::Graphics& g)
 {
     g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));
     g.setColour (juce::Colours::red);
     g.drawRect (getLocalBounds(), 1);
 }
-
+/*Inherited from Component class, resizes the components inside the deck*/
 void PlaylistComponent::resized()
 {
     int columnWidth = getWidth()/5;
@@ -89,10 +88,8 @@ void PlaylistComponent::paintCell(Graphics& g, int rowNumber, int columnId, int 
     default:
         break;
     }
-        //g.drawText(trackInfo.getTrackName(rowNumber), 2, 0, width - 4, height, Justification::centredLeft, true);
-
 }
-/*Refresh component per cell*/
+/*Refresh component per cell, this is where we add the buttons inside the columns*/
 Component* PlaylistComponent::refreshComponentForCell(int rowNumber, int columnId, bool isRowSelected, Component* existingComponentToUpdate)
 {
     if (columnId == 4)
@@ -171,10 +168,6 @@ void PlaylistComponent::changeListenerCallback(ChangeBroadcaster* source)
         {
             savePlaylistToJson();
         }
-        /*else if (trackInfo.getCurrentChangeType() == TrackInfoComponent::TrackChangeType::RemoveTrack)
-        {
-			savePlaylistToJson();
-		}*/
 	}
 }
 /*Last deck to play method, will trigger maincomponent to either play deck1 or deck2*/

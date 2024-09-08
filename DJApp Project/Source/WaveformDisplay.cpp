@@ -26,7 +26,7 @@ WaveformDisplay::WaveformDisplay(AudioFormatManager& formatManagerToUse,
 WaveformDisplay::~WaveformDisplay()
 {
 }
-
+/*Inherited from Component class, paints over the component body*/
 void WaveformDisplay::paint (juce::Graphics& g)
 {
     g.fillAll (backgroundColour);   // clear the background
@@ -56,11 +56,11 @@ void WaveformDisplay::paint (juce::Graphics& g)
             juce::Justification::centred, true);   // draw some placeholder text
     }
 }
-
+/*Inherited from Component class, resizes the components inside the deck*/
 void WaveformDisplay::resized()
 {
 }
-
+/*Load the audio file to be displayed on the waveform*/
 void WaveformDisplay::loadURL(URL audioURL)
 {
     DBG("WaveformDisplay::loadURL");
@@ -69,7 +69,7 @@ void WaveformDisplay::loadURL(URL audioURL)
     if (fileLoaded) DBG("WaveformDisplay::loadURL - Loaded");
 	else DBG("WaveformDisplay::loadURL - Failed to load");
 }
-
+/*Inherited from ChangeListener class, listens for changes in the audio thumbnail*/
 void WaveformDisplay::changeListenerCallback(ChangeBroadcaster* source)
 {
     DBG("WaveformDisplay::changeListenerCallback CHANGE RECEIVED");

@@ -29,8 +29,9 @@ class PlaylistComponent  : public Component,
 public:
     PlaylistComponent(TrackInfoComponent& trackInfoToUse);
     ~PlaylistComponent() override;
-
+    /*Inherited from Component class, paints over the component body*/
     void paint (juce::Graphics&) override;
+    /*Inherited from Component class, resizes the components inside the deck*/
     void resized() override;
     /*Get number of rows of table*/
     int getNumRows() override;
@@ -38,7 +39,7 @@ public:
     void paintRowBackground(Graphics& g, int rowNumber, int width, int height, bool rowIsSelected) override;
     /*This will draw a cell*/
     void paintCell(Graphics& g, int rowNumber, int columnId, int width, int height, bool rowIsSelected) override;
-    /*Refresh component per cell*/
+    /*Refresh component per cell, this is where we add the buttons inside the columns*/
     Component* refreshComponentForCell(int rowNumber, int columnId, bool isRowSelected, Component* existingComponentToUpdate) override;
     /*Button listener*/
     void buttonClicked(Button* button) override;
@@ -66,6 +67,7 @@ public:
     juce::URL lastPlayedURL;
 
 private:
+    //Required objects and variables
     Colour backgroundColour = Colour{ 25, 23, 26 };
     TableListBox tableComponent;
     TrackInfoComponent& trackInfo;

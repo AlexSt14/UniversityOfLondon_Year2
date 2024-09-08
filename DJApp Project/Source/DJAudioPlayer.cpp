@@ -30,6 +30,7 @@ DJAudioPlayer::~DJAudioPlayer()
 
 }
 //==============================================================================
+/*Inherited from AudioSource class, prepares the player to play audio*/
 void DJAudioPlayer::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
 {
     this->sampleRate = sampleRate;
@@ -37,6 +38,7 @@ void DJAudioPlayer::prepareToPlay(int samplesPerBlockExpected, double sampleRate
     resampleSource.prepareToPlay(samplesPerBlockExpected, sampleRate);
     updateFilters();
 }
+/*Inherited from AudioSource and is called when the audio is ready for the next block of audio data*/
 void DJAudioPlayer::getNextAudioBlock(const AudioSourceChannelInfo& bufferToFill)
 {
     resampleSource.getNextAudioBlock(bufferToFill);
@@ -55,6 +57,7 @@ void DJAudioPlayer::getNextAudioBlock(const AudioSourceChannelInfo& bufferToFill
         						 bufferToFill.buffer->getWritePointer(1, bufferToFill.startSample),
         						 bufferToFill.numSamples);
 }
+/*Inherited from AudioSource class, releases the resources used by the player*/
 void DJAudioPlayer::releaseResources()
 {
     transportSource.releaseResources();

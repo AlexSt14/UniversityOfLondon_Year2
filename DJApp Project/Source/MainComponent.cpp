@@ -40,6 +40,8 @@ MainComponent::~MainComponent()
 }
 
 //==============================================================================
+/*Inherited from AudioSource class, prepares the player to play audio*/
+//Delegating the prepareToPlay method to the audio players and mixer
 void MainComponent::prepareToPlay (int samplesPerBlockExpected, double sampleRate)
 {
     audioPlayer1.prepareToPlay(samplesPerBlockExpected, sampleRate);
@@ -49,12 +51,14 @@ void MainComponent::prepareToPlay (int samplesPerBlockExpected, double sampleRat
     mixer.addInputSource(&audioPlayer1, false);
     mixer.addInputSource(&audioPlayer2, false);
 }
-
+/*Inherited from AudioSource and is called when the audio is ready for the next block of audio data*/
+//Delegating the getNextAudioBlock method to the mixer
 void MainComponent::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
 {
     mixer.getNextAudioBlock(bufferToFill);
 }
-
+/*Inherited from AudioSource class, releases the resources used by the player*/
+//Delegating the releaseResources method to the audio players and mixer
 void MainComponent::releaseResources()
 {
     audioPlayer1.releaseResources();
@@ -63,6 +67,7 @@ void MainComponent::releaseResources()
 }
 
 //==============================================================================
+/*Inherited from Component class, paints over the component body*/
 void MainComponent::paint (juce::Graphics& g)
 {
     // (Our component is opaque, so we must completely fill the background with a solid colour)
@@ -71,7 +76,7 @@ void MainComponent::paint (juce::Graphics& g)
     // You can add your drawing code here!
 
 }
-
+/*Inherited from Component class, resizes the components inside the deck*/
 void MainComponent::resized()
 {
     int deckGUIWidth = getWidth()/2;
@@ -83,7 +88,7 @@ void MainComponent::resized()
     deckGUI2.setBounds(getWidth()/2,0, deckGUIWidth, deckGUIHeight);
     playlist.setBounds(0, playlistY, playlistWidth, playlistHeight);
 }
-/*Change listener*/
+/*Waiting for a change listener from within the playlist component, which will help decide which deck will thetrack be played on*/
 void MainComponent::changeListenerCallback(juce::ChangeBroadcaster* source)
 {
     if (source == &playlist)

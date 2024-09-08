@@ -60,7 +60,6 @@ void TrackInfoComponent::retrieveTracksFromJson(var jsonObject)
                 tracks.push_back(track);
             }
         }
-        //sendChangeMessage();  //Will notify all listeners that tracks have been added
     }
 }
 /*Removing a track from the tracks data structure, it requires the index of the track to be removed*/
@@ -77,22 +76,22 @@ int TrackInfoComponent::getNumTracks()
 {
     return tracks.size();
 }
-/*Get track name*/
+/*Returns the track name info of a specific track, it requires the index of the track*/
 String TrackInfoComponent::getTrackName(int index) const
 {
     return (index >= 0 && index < tracks.size()) ? tracks[index].title : "";
 }
-/*Get track artist*/
+/*Returns the track artist info of a specific track, it requires the index of the track*/
 String TrackInfoComponent::getTrackArtist(int index) const
 {
     return (index >= 0 && index < tracks.size()) ? tracks[index].artist : "";
 }
-/*Get track album*/
+/*Returns the track album info of a specific track, it requires the index of the track*/
 String TrackInfoComponent::getTrackAlbum(int index) const
 {
 	return (index >= 0 && index < tracks.size()) ? tracks[index].album : "";
 }
-/*Get track length*/
+/*Returns the track length info of a specific track, it requires the index of the track*/
 String TrackInfoComponent::getTrackLength(int index) const
 {
 	return (index >= 0 && index < tracks.size()) ? tracks[index].length : "not found";

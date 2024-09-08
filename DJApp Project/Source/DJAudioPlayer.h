@@ -21,8 +21,11 @@ public:
     ~DJAudioPlayer() override;
 
     //==============================================================================
+    /*Inherited from AudioSource class, prepares the player to play audio*/
     void prepareToPlay(int samplesPerBlockExpected, double sampleRate) override;
+    /*Inherited from AudioSource and is called when the audio is ready for the next block of audio data*/
     void getNextAudioBlock(const AudioSourceChannelInfo& bufferToFill) override;
+    /*Inherited from AudioSource class, releases the resources used by the player*/
     void releaseResources() override;
     /*Loading audio from a file*/
     void loadURL(URL audioURL);
@@ -47,6 +50,7 @@ public:
     /*Calculating HI, MID, and LOW effects*/
     void processEQ(const AudioSourceChannelInfo& bufferToFill);
 private:
+    //Necessary objects for playing audio
     AudioFormatManager& formatManager;
 	std::unique_ptr<AudioFormatReaderSource> readerSource;
 	AudioTransportSource transportSource;

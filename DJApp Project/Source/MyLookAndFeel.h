@@ -23,8 +23,7 @@ public:
     ~MyLookAndFeel() override;
 
     /*Overriding drawing the button background*/
-    void drawButtonBackground (Graphics& g, Button& button, const Colour& backgroundColour,
-		bool isMouseOverButton, bool isButtonDown) override;
+    void drawButtonBackground (Graphics& g, Button& button, const Colour& backgroundColour, bool isMouseOverButton, bool isButtonDown) override;
     /*Overriding drawing button text*/
     void drawButtonText (Graphics& g, TextButton& button, bool isMouseOverButton, bool isButtonDown) override;
     /*Overriding drawing the rotary slider*/
